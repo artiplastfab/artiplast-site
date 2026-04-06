@@ -22,15 +22,15 @@ export function Footer({ locale }: { locale: Locale }) {
       <div className="container-shell py-14 sm:py-16">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.7fr_0.7fr_0.9fr]">
           <div>
-            <div className="flex items-center gap-3">
-              <div className="relative h-12 w-12 overflow-hidden rounded-2xl border border-white/10 bg-white">
-                <Image src="/logo/logo.jpg" alt={BRAND_NAME} fill className="object-cover" sizes="48px" />
+            <div className="flex items-center gap-4">
+              <div className="relative h-16 w-16 overflow-hidden rounded-[22px] border border-white/10 bg-white shadow-soft">
+                <Image src="/logo/logo.jpg" alt={BRAND_NAME} fill className="object-cover" sizes="64px" />
               </div>
               <div>
                 <p className="font-display text-2xl font-semibold tracking-[-0.04em]">
                   {BRAND_NAME}
                 </p>
-                <p className="text-xs uppercase tracking-[0.2em] text-white/50">
+                <p className="text-[11px] uppercase tracking-[0.2em] text-white/50">
                   {BRAND_SUBTITLE}
                 </p>
               </div>

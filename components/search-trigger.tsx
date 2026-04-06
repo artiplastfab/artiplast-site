@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useSearch } from "@/components/search-provider";
+import { getUiCopy } from "@/data/site";
 
 export function SearchTrigger({
   children,
@@ -10,10 +11,11 @@ export function SearchTrigger({
   children: ReactNode;
   className?: string;
 }) {
-  const { setOpen } = useSearch();
+  const { setOpen, locale } = useSearch();
+  const copy = getUiCopy(locale);
 
   return (
-    <button type="button" className={className} onClick={() => setOpen(true)} aria-label="Open search">
+    <button type="button" className={className} onClick={() => setOpen(true)} aria-label={copy.actions.search}>
       {children}
     </button>
   );

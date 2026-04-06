@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { X } from "lucide-react";
+import Image from "next/image";
+import { Search, X } from "lucide-react";
 import { getBrandInfo, getUiCopy } from "@/data/site";
-import { LanguageSwitcher } from "@/components/language-switcher";
+import { SearchTrigger } from "@/components/search-trigger";
 import { localizedPath, type Locale } from "@/lib/i18n";
 
 type NavItem = {
@@ -31,15 +32,20 @@ export function MobileMenu({
       <div onClick={() => setOpen(true)}>{trigger}</div>
       {open ? (
         <div className="fixed inset-0 z-50 bg-ink/35 backdrop-blur-sm">
-          <div className="ml-auto flex h-full w-full max-w-sm flex-col bg-white p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="font-display text-xl font-semibold tracking-[-0.04em] text-ink">
-                  {brand.name}
-                </p>
-                <p className="text-xs uppercase tracking-[0.18em] text-muted">
-                  {brand.subtitle}
-                </p>
+          <div className="ml-auto flex h-full w-full max-w-[360px] flex-col bg-white px-5 pb-6 pt-5 shadow-lift">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="relative h-12 w-12 overflow-hidden rounded-[18px] border border-border/60 bg-white shadow-soft">
+                  <Image src={brand.logoSrc} alt={brand.name} fill className="object-cover" sizes="48px" />
+                </div>
+                <div>
+                  <p className="font-display text-lg font-semibold tracking-[-0.04em] text-ink">
+                    {brand.name}
+                  </p>
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-muted">
+                    {brand.subtitle}
+                  </p>
+                </div>
               </div>
               <button
                 type="button"
@@ -49,14 +55,16 @@ export function MobileMenu({
                 <X className="h-5 w-5" />
               </button>
             </div>
-
-            <div className="mt-8">
-              <LanguageSwitcher locale={locale} />
+            <div className="mt-6 flex gap-3">
+              <SearchTrigger className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border px-4 text-sm font-medium text-ink transition hover:border-accent hover:text-accent">
+                <Search className="h-4 w-4" />
+                <span>{copy.actions.search}</span>
+              </SearchTrigger>
             </div>
 
-            <div className="mt-8 flex flex-col gap-3 overflow-y-auto">
+            <div className="mt-6 flex flex-col gap-3 overflow-y-auto">
               {navigation.map((item) => (
-                <div key={item.href} className="rounded-[22px] border border-border/60 px-5 py-4">
+                <div key={item.href} className="rounded-[24px] border border-border/60 bg-panel/45 px-5 py-4">
                   <Link
                     href={item.href}
                     onClick={() => setOpen(false)}
@@ -85,7 +93,7 @@ export function MobileMenu({
             <Link
               href={localizedPath(locale, "/contact")}
               onClick={() => setOpen(false)}
-              className="mt-auto rounded-full bg-ink px-5 py-4 text-center text-sm font-semibold text-white"
+              className="mt-auto rounded-full bg-ink px-5 py-4 text-center text-sm font-semibold text-white transition hover:bg-accent"
             >
               {copy.actions.contact}
             </Link>
