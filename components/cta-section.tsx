@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/reveal";
+import { getBrandInfo, getUiCopy } from "@/data/site";
 import { localizedPath, type Locale } from "@/lib/i18n";
 
 export function CTASection({
@@ -12,6 +13,9 @@ export function CTASection({
   title: string;
   description: string;
 }) {
+  const copy = getUiCopy(locale);
+  const brand = getBrandInfo();
+
   return (
     <section className="container-shell mt-24">
       <Reveal>
@@ -19,7 +23,7 @@ export function CTASection({
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/72">
-                Contact The Factory
+                {copy.actions.contactFactory}
               </p>
               <h2 className="mt-4 font-display text-[clamp(2.2rem,4vw,4rem)] font-semibold tracking-[-0.05em]">
                 {title}
@@ -34,13 +38,13 @@ export function CTASection({
                   href={localizedPath(locale, "/contact")}
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white"
                 >
-                  Contact ArtıPlast <ArrowRight className="h-4 w-4" />
+                  {copy.actions.contact} {brand.name} <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href={localizedPath(locale, "/products")}
                   className="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-4 text-sm font-semibold text-white transition hover:bg-white/10"
                 >
-                  View Product Range
+                  {copy.actions.viewProductRange}
                 </Link>
               </div>
             </div>

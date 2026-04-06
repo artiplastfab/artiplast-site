@@ -7,6 +7,43 @@ import { localizedPath, type Locale } from "@/lib/i18n";
 
 export function HeroSection({ locale }: { locale: Locale }) {
   const copy = getUiCopy(locale);
+  const toneCards: Record<Locale, Array<{ value: string; label: string }>> = {
+    tr: [
+      { value: "Beyaz", label: "Sakin görsel temel" },
+      { value: "Turuncu", label: "Seçici premium vurgu" },
+      { value: "Siyah", label: "Ölçülü kontrast noktaları" },
+    ],
+    en: [
+      { value: "White", label: "Calm visual foundation" },
+      { value: "Orange", label: "Selective premium accents" },
+      { value: "Black", label: "Measured contrast anchors" },
+    ],
+    de: [
+      { value: "Weiß", label: "Ruhige visuelle Basis" },
+      { value: "Orange", label: "Gezielte Premium-Akzente" },
+      { value: "Schwarz", label: "Kontrollierte Kontrastpunkte" },
+    ],
+    ar: [
+      { value: "أبيض", label: "قاعدة بصرية هادئة" },
+      { value: "برتقالي", label: "لمسات فاخرة انتقائية" },
+      { value: "أسود", label: "مرتكزات تباين محسوبة" },
+    ],
+    az: [
+      { value: "Ağ", label: "Sakit vizual əsas" },
+      { value: "Narıncı", label: "Seçimli premium vurğular" },
+      { value: "Qara", label: "Ölçülü kontrast nöqtələri" },
+    ],
+    bg: [
+      { value: "Бяло", label: "Спокойна визуална основа" },
+      { value: "Оранжево", label: "Избрани премиум акценти" },
+      { value: "Черно", label: "Премерени контрастни точки" },
+    ],
+    fr: [
+      { value: "Blanc", label: "Base visuelle calme" },
+      { value: "Orange", label: "Accents premium sélectifs" },
+      { value: "Noir", label: "Points de contraste maîtrisés" },
+    ],
+  };
 
   return (
     <section className="container-shell pt-8 sm:pt-12">
@@ -42,7 +79,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
               <div className="relative min-h-[440px] overflow-hidden rounded-[30px] bg-panel">
                 <Image
                   src="/images/hero-showcase.svg"
-                  alt="Premium ArtıPlast factory and product showcase placeholder"
+                  alt={`${copy.hero.title} - ${copy.hero.eyebrow}`}
                   fill
                   priority
                   className="object-cover transition duration-700 hover:scale-[1.03]"
@@ -50,11 +87,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
                 />
               </div>
               <div className="grid gap-4 sm:grid-cols-3">
-                {[
-                  { value: "White", label: "Calm visual foundation" },
-                  { value: "Orange", label: "Selective premium accents" },
-                  { value: "Black", label: "Measured contrast anchors" },
-                ].map((item) => (
+                {toneCards[locale].map((item) => (
                   <div key={item.label} className="rounded-[24px] bg-panel p-5">
                     <p className="font-display text-2xl font-semibold tracking-[-0.04em] text-ink">
                       {item.value}

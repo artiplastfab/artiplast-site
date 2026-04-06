@@ -12,7 +12,7 @@ export function buildMetadata({
   description: string;
   path: string;
 }): Metadata {
-  const pageTitle = title === "ArtıPlast" ? title : `${title} | ArtıPlast`;
+  const pageTitle = title === "ArtıPLAST" ? title : `${title} | ArtıPLAST`;
   const url = `https://www.artiplast.com${localizedPath(locale, path)}`;
 
   return {
@@ -25,15 +25,16 @@ export function buildMetadata({
         en: `https://www.artiplast.com${localizedPath("en", path)}`,
         de: `https://www.artiplast.com${localizedPath("de", path)}`,
         ar: `https://www.artiplast.com${localizedPath("ar", path)}`,
-        bg: `https://www.artiplast.com${localizedPath("bg", path)}`,
         az: `https://www.artiplast.com${localizedPath("az", path)}`,
+        bg: `https://www.artiplast.com${localizedPath("bg", path)}`,
+        fr: `https://www.artiplast.com${localizedPath("fr", path)}`,
       },
     },
     openGraph: {
       title: pageTitle,
       description,
       url,
-      siteName: "ArtıPlast",
+      siteName: "ArtıPLAST",
       locale: localeLabels[locale].label,
       type: "website",
       images: [
@@ -41,7 +42,7 @@ export function buildMetadata({
           url: "https://www.artiplast.com/og-cover.jpg",
           width: 1200,
           height: 630,
-          alt: "ArtıPlast premium manufacturer website",
+          alt: "ArtıPLAST premium manufacturer website",
         },
       ],
     },

@@ -17,8 +17,8 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.artiplast.com"),
-  title: "ArtıPlast",
-  description: "Premium manufacturer website for ArtıPlast.",
+  title: "ArtıPLAST",
+  description: "Premium manufacturer website for ArtıPLAST.",
 };
 
 export default function RootLayout({

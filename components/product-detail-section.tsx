@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
-import type { Product } from "@/data/site";
+import { getUiCopy, type Product } from "@/data/site";
 import { localizedPath, type Locale } from "@/lib/i18n";
 
 export function ProductDetailSection({
@@ -11,6 +11,8 @@ export function ProductDetailSection({
   locale: Locale;
   product: Product;
 }) {
+  const copy = getUiCopy(locale);
+
   return (
     <article
       id={product.slug}
@@ -48,7 +50,7 @@ export function ProductDetailSection({
             href={localizedPath(locale, `/products/${product.slug}`)}
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent"
           >
-            View Details <ArrowRight className="h-4 w-4" />
+            {copy.actions.viewDetails} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

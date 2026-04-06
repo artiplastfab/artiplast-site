@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { useState } from "react";
 import { X } from "lucide-react";
-import { getUiCopy } from "@/data/site";
+import { getBrandInfo, getUiCopy } from "@/data/site";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { localizedPath, type Locale } from "@/lib/i18n";
 
 type NavItem = {
   label: string;
   href: string;
+  children?: Array<{ label: string; href: string }>;
 };
 
 export function MobileMenu({
@@ -23,6 +24,7 @@ export function MobileMenu({
 }) {
   const [open, setOpen] = useState(false);
   const copy = getUiCopy(locale);
+  const brand = getBrandInfo();
 
   return (
     <>
@@ -33,10 +35,10 @@ export function MobileMenu({
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-display text-xl font-semibold tracking-[-0.04em] text-ink">
-                  ArtıPlast
+                  {brand.name}
                 </p>
                 <p className="text-xs uppercase tracking-[0.18em] text-muted">
-                  Navigation
+                  {brand.subtitle}
                 </p>
               </div>
               <button
@@ -52,16 +54,31 @@ export function MobileMenu({
               <LanguageSwitcher locale={locale} />
             </div>
 
-            <div className="mt-8 flex flex-col gap-3">
+            <div className="mt-8 flex flex-col gap-3 overflow-y-auto">
               {navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="rounded-[22px] border border-border/60 px-5 py-4 text-base font-medium text-ink transition hover:border-accent"
-                >
-                  {item.label}
-                </Link>
+                <div key={item.href} className="rounded-[22px] border border-border/60 px-5 py-4">
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="block text-base font-medium text-ink"
+                  >
+                    {item.label}
+                  </Link>
+                  {item.children?.length ? (
+                    <div className="mt-3 flex flex-col gap-2 border-t border-border/60 pt-3">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => setOpen(false)}
+                          className="text-sm text-muted transition hover:text-ink"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
               ))}
             </div>
 

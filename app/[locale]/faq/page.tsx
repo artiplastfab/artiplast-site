@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AccordionList } from "@/components/accordion-list";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { getFaqItems } from "@/data/site";
+import { getFaqItems, getUiCopy } from "@/data/site";
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -17,7 +17,7 @@ export async function generateMetadata({
   return buildMetadata({
     locale: safeLocale,
     title: "FAQ",
-    description: "Frequently asked questions about ArtıPlast products, production communication, and contact flow.",
+    description: "Frequently asked questions about ArtıPLAST products, production communication, and contact flow.",
     path: "/faq",
   });
 }
@@ -29,13 +29,14 @@ export default async function FaqPage({
 }) {
   const { locale } = await params;
   const items = getFaqItems(locale);
+  const copy = getUiCopy(locale);
 
   return (
     <div className="pb-16 sm:pb-20">
       <PageHero
-        eyebrow="FAQ"
-        title="Clear answers in a spacious, premium format."
-        description="The FAQ stays minimal and practical, helping visitors understand the product and factory conversation quickly."
+        eyebrow={copy.pages.faq.eyebrow}
+        title={copy.pages.faq.title}
+        description={copy.pages.faq.description}
       />
       <section className="container-shell mt-10">
         <Reveal>

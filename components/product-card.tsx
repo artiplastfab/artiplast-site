@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import type { Product } from "@/data/site";
+import { getUiCopy, type Product } from "@/data/site";
 import { localizedPath, type Locale } from "@/lib/i18n";
 
 export function ProductCard({
@@ -11,6 +11,8 @@ export function ProductCard({
   locale: Locale;
   product: Product;
 }) {
+  const copy = getUiCopy(locale);
+
   return (
     <article className="group overflow-hidden rounded-[30px] border border-border/60 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift">
       <div className="relative min-h-[320px] overflow-hidden bg-panel">
@@ -34,7 +36,7 @@ export function ProductCard({
           href={localizedPath(locale, `/products/${product.slug}`)}
           className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink transition hover:text-accent"
         >
-          View details <ArrowRight className="h-4 w-4" />
+          {copy.actions.viewDetails} <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     </article>

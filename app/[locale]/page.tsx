@@ -35,9 +35,9 @@ export default async function HomePage({
       <section className="container-shell mt-10 sm:mt-14">
         <Reveal>
           <SectionHeading
-            eyebrow="Products"
-            title="Three focused product families, presented with clarity."
-            description="Every category is designed to read quickly, photograph beautifully, and support a premium international presentation."
+            eyebrow={copy.home.productsEyebrow}
+            title={copy.home.productsTitle}
+            description={copy.home.productsDescription}
             action={{ label: copy.actions.exploreAllProducts, href: localizedPath(locale, "/products") }}
           />
         </Reveal>
@@ -54,9 +54,9 @@ export default async function HomePage({
         <Reveal>
           <div className="panel overflow-hidden p-8 sm:p-10">
             <SectionHeading
-              eyebrow="Why ArtıPlast"
-              title="A manufacturer presence built on trust, precision, and export-ready presentation."
-              description="Minimal words, strong signals, and a confident visual system help buyers understand the factory before the first message."
+              eyebrow={copy.home.whyEyebrow}
+              title={copy.home.whyTitle}
+              description={copy.home.whyDescription}
             />
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {trustPoints.map((point, index) => (
@@ -69,18 +69,18 @@ export default async function HomePage({
           <div className="relative overflow-hidden rounded-[32px] border border-border/70 bg-ink p-8 text-white shadow-lift sm:p-10">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(244,110,32,0.42),transparent_36%)]" />
             <div className="relative">
-              <p className="eyebrow border-white/10 bg-white/5 text-white">Factory Strength</p>
+              <p className="eyebrow border-white/10 bg-white/5 text-white">{copy.home.factoryPreviewEyebrow}</p>
               <h2 className="mt-6 max-w-md font-display text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
-                Premium visual space reserved for factory mood, production confidence, and export credibility.
+                {copy.home.factoryPreviewTitle}
               </h2>
               <p className="mt-4 max-w-lg text-sm leading-7 text-white/72 sm:text-base">
-                This section is intentionally structured for future photography, cinematic stills, or a short introduction reel.
+                {copy.home.factoryPreviewDescription}
               </p>
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
                 {[
-                  { icon: Building2, label: "Karaman facility" },
-                  { icon: Layers3, label: "Product-focused lines" },
-                  { icon: Globe2, label: "International outlook" },
+                  { icon: Building2, label: "Karaman" },
+                  { icon: Layers3, label: copy.navigation.products },
+                  { icon: Globe2, label: copy.footer.languages },
                 ].map((item) => (
                   <div key={item.label} className="rounded-[24px] border border-white/10 bg-white/5 p-5">
                     <item.icon className="h-5 w-5 text-accent" />
@@ -99,19 +99,19 @@ export default async function HomePage({
             <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
               <div className="flex flex-col justify-between p-8 sm:p-12">
                 <div>
-                  <p className="eyebrow">Featured Visual</p>
+                  <p className="eyebrow">{copy.home.featuredEyebrow}</p>
                   <h2 className="mt-6 headline-lg max-w-xl">
-                    Spacious, editorial product presentation with room for premium media.
+                    {copy.home.featuredTitle}
                   </h2>
                   <p className="mt-4 max-w-md copy-muted">
-                    A wide visual band helps the homepage feel international, confident, and image-led without becoming decorative.
+                    {copy.home.featuredDescription}
                   </p>
                 </div>
                 <a
                   href={localizedPath(locale, "/about")}
                   className="mt-10 inline-flex w-fit items-center gap-2 text-sm font-semibold text-ink transition hover:text-accent"
                 >
-                  See the brand story
+                  {copy.actions.seeBrandStory}
                 </a>
               </div>
               <div className="min-h-[380px] border-t border-border/60 bg-[url('/images/factory-atmosphere.svg')] bg-cover bg-center lg:min-h-[520px] lg:border-l lg:border-t-0" />
@@ -123,9 +123,9 @@ export default async function HomePage({
       <section className="container-shell mt-24">
         <Reveal>
           <SectionHeading
-            eyebrow="Gallery"
-            title="Product-led imagery with very little copy."
-            description="The layout is intentionally prepared for future photography drops, keeping the visual hierarchy clean and premium."
+            eyebrow={copy.home.galleryEyebrow}
+            title={copy.home.galleryTitle}
+            description={copy.home.galleryDescription}
           />
         </Reveal>
         <div className="mt-8">
@@ -136,17 +136,17 @@ export default async function HomePage({
       <section className="container-shell mt-24 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <Reveal>
           <SectionHeading
-            eyebrow="Factory Preview"
-            title="Reserved space for exterior visuals, line footage, and interior production scenes."
-            description="Structured as a premium placeholder now, ready for motion content and real factory photography later."
+            eyebrow={copy.home.factoryPreviewEyebrow}
+            title={copy.home.factoryPreviewTitle}
+            description={copy.home.factoryPreviewDescription}
           />
           <div className="mt-8 flex items-center gap-3 text-sm text-muted">
             <ScanSearch className="h-4 w-4 text-accent" />
-            Search, product pages, and contact journeys all reuse the same product data model.
+            {copy.home.productsDescription}
           </div>
         </Reveal>
         <Reveal delay={0.1}>
-          <VideoPlaceholder />
+          <VideoPlaceholder locale={locale} />
         </Reveal>
       </section>
 
@@ -167,8 +167,8 @@ export default async function HomePage({
 
       <CTASection
         locale={locale}
-        title="Build your first impression with a manufacturer that looks as precise as it produces."
-        description="Use the product pages for category exploration or open the contact page for custom requirements, dimensions, and future factory discussions."
+        title={copy.home.ctaTitle}
+        description={copy.home.ctaDescription}
       />
     </div>
   );

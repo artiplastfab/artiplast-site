@@ -1,7 +1,7 @@
 import { PageHero } from "@/components/page-hero";
 import { ProductDetailSection } from "@/components/product-detail-section";
 import { Reveal } from "@/components/reveal";
-import { getProducts } from "@/data/site";
+import { getProducts, getUiCopy } from "@/data/site";
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
@@ -18,7 +18,7 @@ export async function generateMetadata({
     locale: safeLocale,
     title: "Products",
     description:
-      "Explore ArtıPlast product categories including tavan lambiri, kaval borusu, and PS panel systems.",
+      "Explore ArtıPLAST product categories including tavan lambiri, kaval borusu, and duvar lambiri.",
     path: "/products",
   });
 }
@@ -30,13 +30,14 @@ export default async function ProductsPage({
 }) {
   const { locale } = await params;
   const products = getProducts(locale);
+  const copy = getUiCopy(locale);
 
   return (
     <div className="pb-16 sm:pb-20">
       <PageHero
-        eyebrow="Products"
-        title="A clean product catalog with space, confidence, and clarity."
-        description="Each category is presented with strong imagery, concise features, and a detail path designed for global buyers."
+        eyebrow={copy.pages.products.eyebrow}
+        title={copy.pages.products.title}
+        description={copy.pages.products.description}
       />
 
       <section className="container-shell mt-10">

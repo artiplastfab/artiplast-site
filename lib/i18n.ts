@@ -1,4 +1,4 @@
-export const locales = ["tr", "en", "de", "ar", "bg", "az"] as const;
+export const locales = ["tr", "en", "de", "ar", "az", "bg", "fr"] as const;
 
 export type Locale = (typeof locales)[number];
 
@@ -9,11 +9,12 @@ export const localeLabels: Record<
   { label: string; nativeLabel: string; flag: string; dir?: "ltr" | "rtl" }
 > = {
   tr: { label: "TR", nativeLabel: "Türkçe", flag: "🇹🇷", dir: "ltr" },
-  en: { label: "EN", nativeLabel: "English", flag: "🇬🇧", dir: "ltr" },
+  en: { label: "EN", nativeLabel: "English", flag: "🇺🇸", dir: "ltr" },
   de: { label: "DE", nativeLabel: "Deutsch", flag: "🇩🇪", dir: "ltr" },
   ar: { label: "AR", nativeLabel: "العربية", flag: "🇸🇦", dir: "rtl" },
-  bg: { label: "BG", nativeLabel: "Български", flag: "🇧🇬", dir: "ltr" },
   az: { label: "AZ", nativeLabel: "Azərbaycan", flag: "🇦🇿", dir: "ltr" },
+  bg: { label: "BG", nativeLabel: "Български", flag: "🇧🇬", dir: "ltr" },
+  fr: { label: "FR", nativeLabel: "Français", flag: "🇫🇷", dir: "ltr" },
 };
 
 export function isLocale(value: string): value is Locale {

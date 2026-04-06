@@ -4,12 +4,51 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Search, X } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
+import { getUiCopy } from "@/data/site";
 import { useSearch } from "@/components/search-provider";
 
 export function SearchOverlay() {
-  const { open, setOpen, entries } = useSearch();
+  const { open, setOpen, entries, locale } = useSearch();
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
+  const copy = getUiCopy(locale);
+  const searchUi = {
+    tr: {
+      placeholder: "Ürün, sayfa ve içerik ara",
+      results: "Sonuçlar",
+      empty: "Sonuç bulunamadı. Bir ürün adı, kategori veya sayfa başlığı deneyin.",
+    },
+    en: {
+      placeholder: "Search products, pages, and content",
+      results: "Results",
+      empty: "No results found. Try a product name, category, or page title.",
+    },
+    de: {
+      placeholder: "Produkte, Seiten und Inhalte suchen",
+      results: "Ergebnisse",
+      empty: "Keine Ergebnisse gefunden. Versuchen Sie einen Produktnamen, eine Kategorie oder einen Seitentitel.",
+    },
+    ar: {
+      placeholder: "ابحث في المنتجات والصفحات والمحتوى",
+      results: "النتائج",
+      empty: "لم يتم العثور على نتائج. جرّب اسم منتج أو فئة أو عنوان صفحة.",
+    },
+    az: {
+      placeholder: "Məhsul, səhifə və məzmun axtarın",
+      results: "Nəticələr",
+      empty: "Nəticə tapılmadı. Məhsul adı, kateqoriya və ya səhifə başlığı sınayın.",
+    },
+    bg: {
+      placeholder: "Търсете продукти, страници и съдържание",
+      results: "Резултати",
+      empty: "Няма резултати. Опитайте име на продукт, категория или заглавие на страница.",
+    },
+    fr: {
+      placeholder: "Rechercher des produits, pages et contenus",
+      results: "Résultats",
+      empty: "Aucun résultat trouvé. Essayez un nom de produit, une catégorie ou un titre de page.",
+    },
+  }[locale];
 
   const results = useMemo(() => {
     const value = deferredQuery.trim().toLowerCase();
@@ -46,7 +85,8 @@ export function SearchOverlay() {
                   autoFocus
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Search products, pages, and content"
+                  placeholder={searchUi.placeholder}
+                  aria-label={copy.actions.search}
                   className="h-12 flex-1 border-none bg-transparent text-sm text-ink outline-none placeholder:text-muted"
                 />
                 <button
@@ -60,7 +100,7 @@ export function SearchOverlay() {
 
               <div className="max-h-[60vh] overflow-y-auto p-4 sm:p-5">
                 <div className="mb-3 flex items-center justify-between px-2 text-xs uppercase tracking-[0.18em] text-muted">
-                  <span>Results</span>
+                  <span>{searchUi.results}</span>
                   <span>Ctrl/Cmd + K</span>
                 </div>
                 <div className="space-y-2">
@@ -78,7 +118,7 @@ export function SearchOverlay() {
                     ))
                   ) : (
                     <div className="rounded-[22px] border border-dashed border-border px-4 py-10 text-center text-sm text-muted">
-                      No results found. Try a product name, category, or page title.
+                      {searchUi.empty}
                     </div>
                   )}
                 </div>

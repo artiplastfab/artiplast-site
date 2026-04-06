@@ -7,9 +7,9 @@ import { buildMetadata } from "@/lib/metadata";
 export function generateMetadata(): Metadata {
   return buildMetadata({
     locale: defaultLocale,
-    title: "Premium Manufacturer of Interior Profiles and Panels",
+    title: "ArtıPLAST",
     description:
-      "ArtıPlast is a Karaman-based Turkish manufacturer producing tavan lambiri, kaval borusu, and PS panel systems for global buyers.",
+      "ArtıPLAST is a Karaman-based Turkish manufacturer producing tavan lambiri, kaval borusu, and duvar lambiri for international buyers.",
     path: "",
   });
 }
