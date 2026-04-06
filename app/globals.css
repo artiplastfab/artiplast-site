@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface: 255 255 255;
+  --foreground: 17 17 17;
+  --muted: 92 92 92;
+  --border: 232 232 232;
+  --accent: 244 110 32;
+  --accent-soft: 255 243 234;
+  --panel: 249 247 244;
+  --ink: 9 9 11;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: rgb(var(--foreground));
+  background:
+    radial-gradient(circle at top left, rgba(255, 140, 72, 0.14), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #fffdf9 100%);
+  font-family: var(--font-manrope), sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: rgba(244, 110, 32, 0.16);
+}
+
+.container-shell {
+  @apply mx-auto w-full max-w-[1320px] px-5 sm:px-6 lg:px-10;
+}
+
+.panel {
+  @apply rounded-[28px] border border-border/70 bg-white shadow-soft backdrop-blur-sm;
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accentSoft px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-accent;
+}
+
+.headline-xl {
+  @apply font-display text-[clamp(3rem,7vw,6.25rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-ink;
+}
+
+.headline-lg {
+  @apply font-display text-[clamp(2.2rem,5vw,4.2rem)] font-semibold leading-[0.96] tracking-[-0.04em] text-ink;
+}
+
+.copy-muted {
+  @apply text-sm leading-7 text-muted sm:text-base;
+}
+
+.premium-grid {
+  background-image:
+    linear-gradient(rgba(17, 17, 17, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.orange-line {
+  background: linear-gradient(90deg, rgba(244, 110, 32, 0.9), rgba(244, 110, 32, 0));
+}
