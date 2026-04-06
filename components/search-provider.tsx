@@ -14,6 +14,8 @@ import { SearchOverlay } from "@/components/search-overlay";
 type SearchContextValue = {
   open: boolean;
   setOpen: (open: boolean) => void;
+  query: string;
+  setQuery: (query: string) => void;
   locale: Locale;
   entries: SearchEntry[];
 };
@@ -30,6 +32,7 @@ export function SearchProvider({
   children: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -47,7 +50,7 @@ export function SearchProvider({
   }, []);
 
   return (
-    <SearchContext.Provider value={{ open, setOpen, locale, entries }}>
+    <SearchContext.Provider value={{ open, setOpen, query, setQuery, locale, entries }}>
       {children}
       <SearchOverlay />
     </SearchContext.Provider>

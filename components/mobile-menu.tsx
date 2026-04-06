@@ -5,7 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Search, X } from "lucide-react";
 import { getBrandInfo, getUiCopy } from "@/data/site";
-import { SearchTrigger } from "@/components/search-trigger";
+import { useSearch } from "@/components/search-provider";
 import { localizedPath, type Locale } from "@/lib/i18n";
 
 type NavItem = {
@@ -26,6 +26,7 @@ export function MobileMenu({
   const [open, setOpen] = useState(false);
   const copy = getUiCopy(locale);
   const brand = getBrandInfo();
+  const { setOpen: setSearchOpen, setQuery } = useSearch();
 
   return (
     <>
@@ -55,12 +56,27 @@ export function MobileMenu({
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <div className="mt-6 flex gap-3">
-              <SearchTrigger className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border px-4 text-sm font-medium text-ink transition hover:border-accent hover:text-accent">
-                <Search className="h-4 w-4" />
-                <span>{copy.actions.search}</span>
-              </SearchTrigger>
-            </div>
+            <form
+              className="mt-6"
+              onSubmit={(event) => {
+                event.preventDefault();
+                const form = new FormData(event.currentTarget);
+                const value = String(form.get("menu-search") ?? "").trim();
+                setQuery(value);
+                setOpen(false);
+                setSearchOpen(true);
+              }}
+            >
+              <label className="flex h-12 items-center gap-3 rounded-full border border-border/70 bg-panel/55 px-4">
+                <Search className="h-4 w-4 text-accent" />
+                <input
+                  name="menu-search"
+                  type="search"
+                  placeholder="Arama..."
+                  className="w-full bg-transparent text-sm text-ink outline-none placeholder:text-muted"
+                />
+              </label>
+            </form>
 
             <div className="mt-6 flex flex-col gap-3 overflow-y-auto">
               {navigation.map((item) => (

@@ -3,13 +3,12 @@
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Search, X } from "lucide-react";
-import { useDeferredValue, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo } from "react";
 import { getUiCopy } from "@/data/site";
 import { useSearch } from "@/components/search-provider";
 
 export function SearchOverlay() {
-  const { open, setOpen, entries, locale } = useSearch();
-  const [query, setQuery] = useState("");
+  const { open, setOpen, entries, locale, query, setQuery } = useSearch();
   const deferredQuery = useDeferredValue(query);
   const copy = getUiCopy(locale);
   const searchUi = {
@@ -61,6 +60,12 @@ export function SearchOverlay() {
       return haystack.includes(value);
     });
   }, [deferredQuery, entries]);
+
+  useEffect(() => {
+    if (!open) {
+      setQuery("");
+    }
+  }, [open, setQuery]);
 
   return (
     <AnimatePresence>

@@ -592,7 +592,7 @@ export function getSearchEntries(locale: Locale): SearchEntry[] {
     { title: c.navigation.home, description: c.hero.description, href: localizedPath(locale), keywords: [BRAND_NAME, "manufacturer", "factory"] },
     { title: c.navigation.products, description: c.pages.products.description, href: localizedPath(locale, "/products"), keywords: getProducts(locale).map((product) => product.name) },
     { title: c.navigation.about, description: c.pages.about.description, href: localizedPath(locale, "/about"), keywords: [BRAND_NAME, "Karaman"] },
-    { title: c.navigation.faq, description: c.pages.faq.description, href: localizedPath(locale, "/faq"), keywords: ["faq", "questions"] },
+    { title: c.navigation.faq, description: c.pages.faq.description, href: localizedPath(locale, "/info"), keywords: ["faq", "questions"] },
     { title: c.navigation.contact, description: c.pages.contact.description, href: localizedPath(locale, "/contact"), keywords: [PHONE_DISPLAY, ADDRESS] },
   ];
 
@@ -627,7 +627,7 @@ export function getNavigation(locale: Locale): NavItem[] {
     { label: c.navigation.home, href: localizedPath(locale) },
     { label: c.navigation.about, href: localizedPath(locale, "/about") },
     { label: c.navigation.products, href: localizedPath(locale, "/products"), children: productChildren },
-    { label: c.navigation.faq, href: localizedPath(locale, "/faq") },
+    { label: c.navigation.faq, href: localizedPath(locale, "/info") },
     { label: c.navigation.contact, href: localizedPath(locale, "/contact") },
   ];
 }
