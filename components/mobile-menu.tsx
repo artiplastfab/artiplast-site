@@ -77,20 +77,6 @@ export function MobileMenu({
                   >
                     {item.label}
                   </Link>
-                  {item.children?.length ? (
-                    <div className="mt-1 flex flex-col gap-1 border-t border-border/70 px-2 pt-3">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={() => setOpen(false)}
-                          className="rounded-[18px] px-3 py-2 text-sm text-ink/78 transition hover:bg-sand/70 hover:text-accent"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  ) : null}
                 </div>
               ))}
             </nav>
