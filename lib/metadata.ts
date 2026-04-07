@@ -12,7 +12,7 @@ export function buildMetadata({
   description: string;
   path: string;
 }): Metadata {
-  const pageTitle = title === "ArtıPLAST" ? title : `${title} | ArtıPLAST`;
+  const pageTitle = title === "ArtıPLASTİK" ? title : `${title} | ArtıPLASTİK`;
   const url = `https://www.artiplast.com${localizedPath(locale, path)}`;
 
   return {
@@ -34,7 +34,7 @@ export function buildMetadata({
       title: pageTitle,
       description,
       url,
-      siteName: "ArtıPLAST",
+      siteName: "ArtıPLASTİK",
       locale: localeLabels[locale].label,
       type: "website",
       images: [
@@ -42,7 +42,7 @@ export function buildMetadata({
           url: "https://www.artiplast.com/og-cover.jpg",
           width: 1200,
           height: 630,
-          alt: "ArtıPLAST premium manufacturer website",
+          alt: "ArtıPLASTİK premium manufacturer website",
         },
       ],
     },

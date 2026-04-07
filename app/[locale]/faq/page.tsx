@@ -17,7 +17,7 @@ export async function generateMetadata({
   return buildMetadata({
     locale: safeLocale,
     title: "FAQ",
-    description: "Frequently asked questions about ArtıPLAST products, production communication, and contact flow.",
+  description: "Frequently asked questions about ArtıPLASTİK products, production communication, and contact flow.",
     path: "/faq",
   });
 }

@@ -2,7 +2,7 @@ import { Building2, Factory, Ruler, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { localizedPath, type Locale } from "@/lib/i18n";
 
-export const BRAND_NAME = "ArtıPLAST";
+export const BRAND_NAME = "ArtıPLASTİK";
 export const BRAND_SUBTITLE = "Üretici";
 export const PHONE_DISPLAY = "0546 961 01 07";
 export const PHONE_LINK = "tel:+905469610107";
@@ -262,7 +262,7 @@ const localeCopy: Record<Locale, LocaleCopy> = {
     },
     pages: {
       products: { eyebrow: "Ürünler", title: "Temiz, net ve premium bir ürün kataloğu.", description: "Ana ürün aileleri güçlü görseller ve kısa içeriklerle sunulur." },
-      about: { eyebrow: "Hakkımızda", title: "Kısa ama güven veren bir üretici hikayesi.", description: "ArtıPLAST, Karaman merkezli ve uluslararası algısı güçlü bir üretici olarak konumlanır." },
+      about: { eyebrow: "Hakkımızda", title: "Kısa ama güven veren bir üretici hikayesi.", description: "ArtıPLASTİK, Türkiye Karaman merkezli üretim gücünü uluslararası kalite standartlarıyla birleştiren güvenilir bir üreticidir." },
       faq: { eyebrow: "SSS", title: "Hızlı ve net cevaplar.", description: "Ürünler, iletişim ve üretim yaklaşımıyla ilgili temel bilgiler." },
       contact: { eyebrow: "İletişim", title: "Fabrikaya doğrudan ulaşın.", description: "Telefon, WhatsApp ve adres bilgilerimizle hızlı temas kurun." },
     },
@@ -270,7 +270,7 @@ const localeCopy: Record<Locale, LocaleCopy> = {
       navigation: "Navigasyon",
       languages: "Diller",
       contact: "İletişim",
-      copyright: "© 2026 ArtıPLAST. Tüm hakları saklıdır.",
+      copyright: "© 2026 ArtıPLASTİK. Tüm hakları saklıdır.",
     },
     labels: {
       phone: "Telefon",
@@ -347,7 +347,7 @@ const localeCopy: Record<Locale, LocaleCopy> = {
     },
     pages: {
       products: { eyebrow: "Products", title: "A clean and premium product catalog.", description: "The main product families are presented through strong visuals and concise text." },
-      about: { eyebrow: "About", title: "A concise and confident manufacturer story.", description: "ArtıPLAST is positioned as a Karaman-based producer with international credibility." },
+      about: { eyebrow: "About", title: "A concise and confident manufacturer story.", description: "ArtıPLASTİK is a reliable manufacturer based in Karaman, Türkiye, combining production strength with international quality standards." },
       faq: { eyebrow: "FAQ", title: "Fast and clear answers.", description: "Essential information about products, contact, and manufacturing approach." },
       contact: { eyebrow: "Contact", title: "Reach the factory directly.", description: "Contact us quickly through phone, WhatsApp, and address details." },
     },
@@ -355,7 +355,7 @@ const localeCopy: Record<Locale, LocaleCopy> = {
       navigation: "Navigation",
       languages: "Languages",
       contact: "Contact",
-      copyright: "© 2026 ArtıPLAST. All rights reserved.",
+      copyright: "© 2026 ArtıPLASTİK. All rights reserved.",
     },
     labels: {
       phone: "Phone",
@@ -434,7 +434,7 @@ const localeCopy: Record<Locale, LocaleCopy> = {
           faq: { eyebrow: "FAQ", title: "Schnelle und klare Antworten.", description: "Wichtige Informationen zu Produkten, Kontakt und Produktionsansatz." },
           contact: { eyebrow: "Kontakt", title: "Kontaktieren Sie die Fabrik direkt.", description: "Erreichen Sie uns schnell über Telefon, WhatsApp und Adresse." },
         },
-        footer: { navigation: "Navigation", languages: "Sprachen", contact: "Kontakt", copyright: "© 2026 ArtıPLAST. Alle Rechte vorbehalten." },
+        footer: { navigation: "Navigation", languages: "Sprachen", contact: "Kontakt", copyright: "© 2026 ArtıPLASTİK. Alle Rechte vorbehalten." },
         labels: { phone: "Telefon", whatsapp: "WhatsApp", address: "Adresse", dimensions: "Abmessungen", finishOptions: "Oberflächen", colorRange: "Farben", packaging: "Verpackung", placeholder: "Wird ergänzt", applications: "Anwendungsbereiche", specifications: "Spezifikationen", factoryConfidence: "Produktionssicherheit", relatedProducts: "Verwandte Produkte", company: "Unternehmen", qualityApproach: "Qualitätsansatz", map: "Standort", form: "Anfrageformular" },
         form: { title: "Direkt Kontakt aufnehmen.", description: "Hinterlassen Sie eine kurze Nachricht zu Produkt, Projekt oder Sonderanfertigung.", fullName: "Name", company: "Unternehmen", email: "E-Mail", phone: "Telefon / WhatsApp", message: "Beschreiben Sie Ihr Produkt oder Ihre Anfrage.", success: "Ihre Nachricht wurde empfangen. Das Formular kann später an E-Mail oder CRM angebunden werden." },
         home: { productsEyebrow: "Produkte", productsTitle: "Drei zentrale Produktfamilien, klar präsentiert.", productsDescription: "Die visuell starke Struktur hilft Käufern, die Produkte schnell zu verstehen.", whyEyebrow: "Warum ArtıPLAST", whyTitle: "Ein Unternehmensauftritt mit Vertrauen, Ordnung und Produktionsstärke.", whyDescription: "Wenig Text, klare Signale und großzügige Abstände schaffen Premium-Wirkung.", featuredEyebrow: "Visuelles Highlight", featuredTitle: "Großzügiger redaktioneller Raum für Premium-Medien.", featuredDescription: "Der breite Bildbereich verleiht der Startseite einen ruhigen internationalen Charakter.", galleryEyebrow: "Galerie", galleryTitle: "Produktorientierte Bilder mit sehr wenig Text.", galleryDescription: "Premium-Galeriesystem für echte Fabrik- und Produktfotos.", factoryPreviewEyebrow: "Fabrikvorschau", factoryPreviewTitle: "Reservierter Bereich für Außen-, Innen- und Produktionsbilder.", factoryPreviewDescription: "Die Struktur ist bereit für künftige Fabrikvideos und Fotoinhalte.", ctaTitle: "Schaffen Sie einen ersten Eindruck, der so präzise aussieht wie die Produktion dahinter.", ctaDescription: "Entdecken Sie Produktkategorien oder kontaktieren Sie die Fabrik für Maße, Projekte und Sonderwünsche." },
@@ -723,15 +723,69 @@ export function getNavigation(locale: Locale): NavItem[] {
       { label: "Pourquoi nous", href: localizedPath(locale, "/about#neden-biz") },
     ],
   };
-  const productChildren = getProducts(locale).map((product) => ({
-    label: product.name,
-    href: localizedPath(locale, `/products/${product.slug}`),
-  }));
+  const productChildrenByLocale: Record<Locale, Array<{ label: string; href: string }>> = {
+    tr: [
+      { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+      { label: "Tavan Lambirileri", href: localizedPath(locale, "/products#tavan-lambirileri") },
+      { label: "Kapı Lambirileri", href: localizedPath(locale, "/products#kapi-lambirileri") },
+      { label: "Duvar Lambirileri", href: localizedPath(locale, "/products#duvar-lambirileri") },
+      { label: "Kapı Pervazı", href: localizedPath(locale, "/products#kapi-pervazi") },
+      { label: "Pencere Pervazı", href: localizedPath(locale, "/products#pencere-pervazi") },
+    ],
+    en: [
+      { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+      { label: "Ceiling Claddings", href: localizedPath(locale, "/products#tavan-lambirileri") },
+      { label: "Door Claddings", href: localizedPath(locale, "/products#kapi-lambirileri") },
+      { label: "Wall Claddings", href: localizedPath(locale, "/products#duvar-lambirileri") },
+      { label: "Door Trim", href: localizedPath(locale, "/products#kapi-pervazi") },
+      { label: "Window Trim", href: localizedPath(locale, "/products#pencere-pervazi") },
+    ],
+    de: [
+      { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+      { label: "Deckenverkleidungen", href: localizedPath(locale, "/products#tavan-lambirileri") },
+      { label: "Türverkleidungen", href: localizedPath(locale, "/products#kapi-lambirileri") },
+      { label: "Wandverkleidungen", href: localizedPath(locale, "/products#duvar-lambirileri") },
+      { label: "Türleiste", href: localizedPath(locale, "/products#kapi-pervazi") },
+      { label: "Fensterleiste", href: localizedPath(locale, "/products#pencere-pervazi") },
+    ],
+    ar: [
+      { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+      { label: "كسوات السقف", href: localizedPath(locale, "/products#tavan-lambirileri") },
+      { label: "كسوات الأبواب", href: localizedPath(locale, "/products#kapi-lambirileri") },
+      { label: "كسوات الجدران", href: localizedPath(locale, "/products#duvar-lambirileri") },
+      { label: "إطار الباب", href: localizedPath(locale, "/products#kapi-pervazi") },
+      { label: "إطار النافذة", href: localizedPath(locale, "/products#pencere-pervazi") },
+    ],
+    az: [
+      { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+      { label: "Tavan Lambiriləri", href: localizedPath(locale, "/products#tavan-lambirileri") },
+      { label: "Qapı Lambiriləri", href: localizedPath(locale, "/products#kapi-lambirileri") },
+      { label: "Divar Lambiriləri", href: localizedPath(locale, "/products#duvar-lambirileri") },
+      { label: "Qapı Pərvazı", href: localizedPath(locale, "/products#kapi-pervazi") },
+      { label: "Pəncərə Pərvazı", href: localizedPath(locale, "/products#pencere-pervazi") },
+    ],
+    bg: [
+      { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+      { label: "Таванни Ламперии", href: localizedPath(locale, "/products#tavan-lambirileri") },
+      { label: "Ламперии За Врати", href: localizedPath(locale, "/products#kapi-lambirileri") },
+      { label: "Стенни Ламперии", href: localizedPath(locale, "/products#duvar-lambirileri") },
+      { label: "Перваз За Врата", href: localizedPath(locale, "/products#kapi-pervazi") },
+      { label: "Перваз За Прозорец", href: localizedPath(locale, "/products#pencere-pervazi") },
+    ],
+    fr: [
+      { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+      { label: "Lambris De Plafond", href: localizedPath(locale, "/products#tavan-lambirileri") },
+      { label: "Lambris De Porte", href: localizedPath(locale, "/products#kapi-lambirileri") },
+      { label: "Lambris Muraux", href: localizedPath(locale, "/products#duvar-lambirileri") },
+      { label: "Moulure De Porte", href: localizedPath(locale, "/products#kapi-pervazi") },
+      { label: "Moulure De Fenêtre", href: localizedPath(locale, "/products#pencere-pervazi") },
+    ],
+  };
 
   return [
     { label: c.navigation.home, href: localizedPath(locale) },
     { label: c.navigation.about, href: localizedPath(locale, "/about"), children: aboutChildrenByLocale[locale] },
-    { label: c.navigation.products, href: localizedPath(locale, "/products"), children: productChildren },
+    { label: c.navigation.products, href: localizedPath(locale, "/products"), children: productChildrenByLocale[locale] },
     { label: c.navigation.catalog, href: localizedPath(locale, "/katalog") },
     { label: c.navigation.faq, href: localizedPath(locale, "/info") },
     { label: c.navigation.contact, href: localizedPath(locale, "/contact") },

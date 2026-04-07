@@ -18,7 +18,7 @@ export async function generateMetadata({
     locale: safeLocale,
     title: "Products",
     description:
-      "Explore ArtıPLAST product categories including tavan lambiri, kaval borusu, and duvar lambiri.",
+    "Explore ArtıPLASTİK product categories including PVC, ceiling claddings, door claddings, wall claddings, and trim solutions.",
     path: "/products",
   });
 }

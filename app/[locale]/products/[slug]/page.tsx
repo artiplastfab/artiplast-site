@@ -45,7 +45,7 @@ export async function generateMetadata({
     return buildMetadata({
       locale: safeLocale,
       title: "Product",
-      description: "ArtıPLAST product detail page.",
+  description: "ArtıPLASTİK product detail page.",
       path: `/products/${slug}`,
     });
   }

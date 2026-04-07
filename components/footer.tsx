@@ -12,7 +12,7 @@ import {
   getUiCopy,
 } from "@/data/site";
 import { getLegalLinks, getLegalSectionTitle } from "@/data/legal";
-import { getLocaleDisplayName, localeLabels, localizedPath, locales, type Locale } from "@/lib/i18n";
+import { type Locale } from "@/lib/i18n";
 
 export function Footer({ locale }: { locale: Locale }) {
   const links = getFooterLinks(locale);
@@ -21,13 +21,13 @@ export function Footer({ locale }: { locale: Locale }) {
   const legalLinks = getLegalLinks(locale);
   const legalTitle = getLegalSectionTitle(locale);
   const footerProductsByLocale: Record<Locale, { title: string; items: string[] }> = {
-    tr: { title: "Ürünlerimiz", items: ["PVC", "KAPI, DUVAR VE TAVAN LAMBİRİLERİ", "KAPI VE PENCERE PERVAZI"] },
-    en: { title: "Our Products", items: ["PVC", "DOOR, WALL AND CEILING CLADDING", "DOOR AND WINDOW TRIM"] },
-    de: { title: "Unsere Produkte", items: ["PVC", "TÜR-, WAND- UND DECKENVERKLEIDUNGEN", "TÜR- UND FENSTERLEISTE"] },
+    tr: { title: "Ürünlerimiz", items: ["PVC", "Kapı, Duvar ve Tavan Lambirileri", "Kapı ve Pencere Pervazı"] },
+    en: { title: "Our Products", items: ["PVC", "Door, Wall and Ceiling Claddings", "Door and Window Trim"] },
+    de: { title: "Unsere Produkte", items: ["PVC", "Tür-, Wand- und Deckenverkleidungen", "Tür- und Fensterleiste"] },
     ar: { title: "منتجاتنا", items: ["PVC", "كسوات الأبواب والجدران والأسقف", "إطار الأبواب والنوافذ"] },
-    az: { title: "Məhsullarımız", items: ["PVC", "QAPI, DİVAR VƏ TAVAN LAMBİRİLƏRİ", "QAPI VƏ PƏNCƏRƏ PƏRVAZI"] },
-    bg: { title: "Нашите продукти", items: ["PVC", "ЛАМПЕРИИ ЗА ВРАТИ, СТЕНИ И ТАВАНИ", "ПЕРВАЗ ЗА ВРАТИ И ПРОЗОРЦИ"] },
-    fr: { title: "Nos Produits", items: ["PVC", "LAMBRIS PORTE, MUR ET PLAFOND", "MOULURE DE PORTE ET FENÊTRE"] },
+    az: { title: "Məhsullarımız", items: ["PVC", "Qapı, Divar və Tavan Lambiriləri", "Qapı və Pəncərə Pərvazı"] },
+    bg: { title: "Нашите продукти", items: ["PVC", "Ламперии За Врати, Стени И Тавани", "Перваз За Врати И Прозорци"] },
+    fr: { title: "Nos Produits", items: ["PVC", "Lambris Porte, Mur Et Plafond", "Moulure De Porte Et Fenêtre"] },
   };
   const socialTitleByLocale: Record<Locale, string> = {
     tr: "Sosyal Medyada Bizi Takip Edin",
@@ -66,7 +66,7 @@ export function Footer({ locale }: { locale: Locale }) {
   return (
     <footer className="mt-24 bg-ink text-white">
       <div className="container-shell py-14 sm:py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.72fr_0.9fr_0.72fr_0.72fr_0.9fr_1fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.8fr_0.95fr_0.8fr_0.9fr_1fr]">
           <div>
             <div className="flex items-center gap-4">
               <div className="relative h-16 w-16 overflow-hidden rounded-[22px] border border-white/10 bg-white shadow-soft">
@@ -108,20 +108,6 @@ export function Footer({ locale }: { locale: Locale }) {
                 <span key={item} className="text-sm leading-6 text-white/78">
                   {item}
                 </span>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
-              {copy.footer.languages}
-            </p>
-            <div className="mt-5 flex flex-col gap-3">
-              {locales.map((item) => (
-                <Link key={item} href={localizedPath(item)} className="flex items-center gap-3 text-sm text-white/78 transition hover:text-white">
-                  <span>{localeLabels[item].flag}</span>
-                  <span>{getLocaleDisplayName(locale, item)}</span>
-                </Link>
               ))}
             </div>
           </div>

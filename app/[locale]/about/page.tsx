@@ -20,7 +20,7 @@ export async function generateMetadata({
     locale: safeLocale,
     title: "About",
     description:
-      "Learn about ArtıPLAST, a Karaman-based manufacturer focused on premium product presentation and reliable production capability.",
+    "Learn about ArtıPLASTİK, a Karaman-based manufacturer focused on premium product presentation and reliable production capability.",
     path: "/about",
   });
 }

@@ -18,7 +18,7 @@ export async function generateMetadata({
   return buildMetadata({
     locale: safeLocale,
     title: "Contact",
-    description: "Contact ArtıPLAST for product information, factory discussions, and future export-oriented inquiries.",
+  description: "Contact ArtıPLASTİK for product information, factory discussions, and future export-oriented inquiries.",
     path: "/contact",
   });
 }

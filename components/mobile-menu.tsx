@@ -64,14 +64,29 @@ export function MobileMenu({
             </div>
             <nav className="mt-8 flex flex-col gap-3">
               {navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="rounded-[24px] border border-border bg-white px-5 py-4 text-base font-medium text-ink shadow-soft transition hover:border-accent hover:text-accent"
-                >
-                  {item.label}
-                </Link>
+                <div key={item.href} className="rounded-[24px] border border-border bg-white p-2 shadow-soft">
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="flex rounded-[20px] px-3 py-3 text-base font-medium text-ink transition hover:text-accent"
+                  >
+                    {item.label}
+                  </Link>
+                  {item.children?.length ? (
+                    <div className="mt-1 flex flex-col gap-1 border-t border-border/70 px-2 pt-3">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => setOpen(false)}
+                          className="rounded-[18px] px-3 py-2 text-sm text-ink/78 transition hover:bg-sand/70 hover:text-accent"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
               ))}
             </nav>
 
