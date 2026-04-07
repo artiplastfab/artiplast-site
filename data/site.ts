@@ -506,7 +506,7 @@ export function getUiCopy(locale: Locale) {
 }
 
 export function getBrandInfo(locale: Locale) {
-  return { name: BRAND_NAME, subtitle: copy(locale).brandSubtitle, logoSrc: "/logo.jpg" };
+  return { name: BRAND_NAME, subtitle: copy(locale).brandSubtitle, logoSrc: "/logo/logo.jpg" };
 }
 
 const productNameOverrides: Record<Locale, Record<string, string>> = {

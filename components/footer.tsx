@@ -72,7 +72,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <div>
             <div className="flex items-center gap-4">
               <div className="relative h-12 w-[176px] shrink-0">
-                <Image src="/logo.jpg" alt={BRAND_NAME} fill className="object-contain object-left" sizes="176px" />
+                <Image src="/logo/logo.jpg" alt={BRAND_NAME} fill className="object-contain object-left" sizes="176px" />
               </div>
               <div>
                 <p className="font-display text-2xl font-semibold tracking-[-0.04em]">
