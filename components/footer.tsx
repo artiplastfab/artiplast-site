@@ -28,6 +28,7 @@ export function Footer({ locale }: { locale: Locale }) {
     az: { title: "Məhsullarımız", items: ["PVC", "Qapı, Divar və Tavan Lambiriləri", "Qapı və Pəncərə Pərvazı"] },
     bg: { title: "Нашите продукти", items: ["PVC", "Ламперии За Врати, Стени И Тавани", "Перваз За Врати И Прозорци"] },
     fr: { title: "Nos Produits", items: ["PVC", "Lambris Porte, Mur Et Plafond", "Moulure De Porte Et Fenêtre"] },
+    ru: { title: "Наша Продукция", items: ["PVC", "Потолочные Ламбрии", "Стеновые Ламбрии", "Дверные Ламбрии", "Дверной Наличник", "Оконный Наличник"] },
   };
   const socialTitleByLocale: Record<Locale, string> = {
     tr: "Sosyal Medyada Bizi Takip Edin",
@@ -37,6 +38,7 @@ export function Footer({ locale }: { locale: Locale }) {
     az: "Bizi Sosial Mediada İzləyin",
     bg: "Последвайте Ни В Социалните Мрежи",
     fr: "Suivez-Nous Sur Les Réseaux Sociaux",
+    ru: "Следите За Нами В Соцсетях",
   };
   const socialLinks = [
     {

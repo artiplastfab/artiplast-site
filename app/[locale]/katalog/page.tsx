@@ -13,6 +13,7 @@ const catalogCopy: Record<Locale, { title: string; description: string; button: 
   az: { title: "Kataloq", description: "Məhsul kataloqumuzu nəzərdən keçirin və ya endirin", button: "Kataloqu Yüklə", preview: "Kataloq Önizləmə" },
   bg: { title: "Каталог", description: "Разгледайте или изтеглете продуктовия ни каталог", button: "Изтегли каталога", preview: "Преглед на каталога" },
   fr: { title: "Catalogue", description: "Consultez ou téléchargez notre catalogue de produits", button: "Télécharger le catalogue", preview: "Aperçu du catalogue" },
+  ru: { title: "Каталог", description: "Ознакомьтесь с нашим каталогом продукции или скачайте его", button: "Скачать Каталог", preview: "Предпросмотр Каталога" },
 };
 
 export async function generateMetadata({

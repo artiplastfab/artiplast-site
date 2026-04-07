@@ -31,6 +31,10 @@ export function VideoPlaceholder({ locale }: { locale: Locale }) {
       title: "Zone vidéo",
       description: "Une future vidéo de présentation de l'usine, des vues aériennes ou un film de production peuvent être placés ici.",
     },
+    ru: {
+      title: "Видео Зона",
+      description: "Здесь позже можно разместить презентационное видео завода, аэросъемку или производственный ролик.",
+    },
   }[locale];
 
   return (

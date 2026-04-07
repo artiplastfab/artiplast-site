@@ -28,6 +28,7 @@ export function buildMetadata({
         az: `https://www.artiplast.com${localizedPath("az", path)}`,
         bg: `https://www.artiplast.com${localizedPath("bg", path)}`,
         fr: `https://www.artiplast.com${localizedPath("fr", path)}`,
+        ru: `https://www.artiplast.com${localizedPath("ru", path)}`,
       },
     },
     openGraph: {

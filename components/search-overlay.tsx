@@ -47,6 +47,11 @@ export function SearchOverlay() {
       results: "Résultats",
       empty: "Aucun résultat trouvé. Essayez un nom de produit, une catégorie ou un titre de page.",
     },
+    ru: {
+      placeholder: "Искать продукцию, страницы и контент",
+      results: "Результаты",
+      empty: "Ничего не найдено. Попробуйте название продукта, категорию или заголовок страницы.",
+    },
   }[locale];
 
   const results = useMemo(() => {

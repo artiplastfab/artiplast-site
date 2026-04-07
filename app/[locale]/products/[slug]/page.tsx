@@ -81,6 +81,7 @@ export default async function ProductDetailPage({
     az: "Zərif interyerlər və etibarlı istehsalçı təqdimatı üçün hazırlanıb.",
     bg: "Създаден за изискани интериори и надеждно представяне на производителя.",
     fr: "Conçu pour des intérieurs raffinés et une présentation fabricant fiable.",
+    ru: "Разработано для изысканных интерьеров и надежной презентации производителя.",
   };
 
   return (

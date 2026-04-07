@@ -1,4 +1,4 @@
-export const locales = ["tr", "en", "de", "ar", "az", "bg", "fr"] as const;
+export const locales = ["tr", "en", "de", "ar", "az", "bg", "fr", "ru"] as const;
 
 export type Locale = (typeof locales)[number];
 
@@ -15,6 +15,7 @@ export const localeLabels: Record<
   az: { label: "AZ", nativeLabel: "Azərbaycan", flag: "🇦🇿", dir: "ltr" },
   bg: { label: "BG", nativeLabel: "Български", flag: "🇧🇬", dir: "ltr" },
   fr: { label: "FR", nativeLabel: "Français", flag: "🇫🇷", dir: "ltr" },
+  ru: { label: "RU", nativeLabel: "Русский", flag: "🇷🇺", dir: "ltr" },
 };
 
 const languageNamesByUiLocale: Record<Locale, Record<Locale, string>> = {
@@ -26,6 +27,7 @@ const languageNamesByUiLocale: Record<Locale, Record<Locale, string>> = {
     az: "Azerbaycan Türkçesi",
     bg: "Bulgarca",
     fr: "Fransızca",
+    ru: "Rusça",
   },
   en: {
     tr: "Turkish",
@@ -35,6 +37,7 @@ const languageNamesByUiLocale: Record<Locale, Record<Locale, string>> = {
     az: "Azerbaijani",
     bg: "Bulgarian",
     fr: "French",
+    ru: "Russian",
   },
   de: {
     tr: "Türkisch",
@@ -44,6 +47,7 @@ const languageNamesByUiLocale: Record<Locale, Record<Locale, string>> = {
     az: "Aserbaidschanisch",
     bg: "Bulgarisch",
     fr: "Französisch",
+    ru: "Russisch",
   },
   ar: {
     tr: "التركية",
@@ -53,6 +57,7 @@ const languageNamesByUiLocale: Record<Locale, Record<Locale, string>> = {
     az: "الأذربيجانية",
     bg: "البلغارية",
     fr: "الفرنسية",
+    ru: "الروسية",
   },
   az: {
     tr: "Türkcə",
@@ -62,6 +67,7 @@ const languageNamesByUiLocale: Record<Locale, Record<Locale, string>> = {
     az: "Azərbaycan Türkçəsi",
     bg: "Bolqarca",
     fr: "Fransızca",
+    ru: "Rusca",
   },
   bg: {
     tr: "Турски",
@@ -71,6 +77,7 @@ const languageNamesByUiLocale: Record<Locale, Record<Locale, string>> = {
     az: "Азербайджански",
     bg: "Български",
     fr: "Френски",
+    ru: "Руски",
   },
   fr: {
     tr: "Turc",
@@ -80,6 +87,17 @@ const languageNamesByUiLocale: Record<Locale, Record<Locale, string>> = {
     az: "Azéri",
     bg: "Bulgare",
     fr: "Français",
+    ru: "Russe",
+  },
+  ru: {
+    tr: "Турецкий",
+    en: "Английский",
+    de: "Немецкий",
+    ar: "Арабский",
+    az: "Азербайджанский",
+    bg: "Болгарский",
+    fr: "Французский",
+    ru: "Русский",
   },
 };
 
