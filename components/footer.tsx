@@ -12,7 +12,7 @@ import {
   getUiCopy,
 } from "@/data/site";
 import { getLegalLinks, getLegalSectionTitle } from "@/data/legal";
-import { type Locale } from "@/lib/i18n";
+import { localizedPath, type Locale } from "@/lib/i18n";
 
 export function Footer({ locale }: { locale: Locale }) {
   const links = getFooterLinks(locale);
@@ -20,15 +20,95 @@ export function Footer({ locale }: { locale: Locale }) {
   const brand = getBrandInfo(locale);
   const legalLinks = getLegalLinks(locale);
   const legalTitle = getLegalSectionTitle(locale);
-  const footerProductsByLocale: Record<Locale, { title: string; items: string[] }> = {
-    tr: { title: "Ürünlerimiz", items: ["PVC", "Tavan Lambirileri", "Duvar Lambirileri", "Kapı Lambirileri", "Kapı Pervazı", "Pencere Pervazı"] },
-    en: { title: "Our Products", items: ["PVC", "Door, Wall and Ceiling Claddings", "Door and Window Trim"] },
-    de: { title: "Unsere Produkte", items: ["PVC", "Tür-, Wand- und Deckenverkleidungen", "Tür- und Fensterleiste"] },
-    ar: { title: "منتجاتنا", items: ["PVC", "كسوات الأبواب والجدران والأسقف", "إطار الأبواب والنوافذ"] },
-    az: { title: "Məhsullarımız", items: ["PVC", "Qapı, Divar və Tavan Lambiriləri", "Qapı və Pəncərə Pərvazı"] },
-    bg: { title: "Нашите продукти", items: ["PVC", "Ламперии За Врати, Стени И Тавани", "Перваз За Врати И Прозорци"] },
-    fr: { title: "Nos Produits", items: ["PVC", "Lambris Porte, Mur Et Plafond", "Moulure De Porte Et Fenêtre"] },
-    ru: { title: "Наша Продукция", items: ["PVC", "Потолочные Ламбрии", "Стеновые Ламбрии", "Дверные Ламбрии", "Дверной Наличник", "Оконный Наличник"] },
+  const footerProductsByLocale: Record<Locale, { title: string; items: Array<{ label: string; href: string }> }> = {
+    tr: {
+      title: "Ürünlerimiz",
+      items: [
+        { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+        { label: "Tavan Lambirileri", href: localizedPath(locale, "/products#tavan-lambirileri") },
+        { label: "Duvar Lambirileri", href: localizedPath(locale, "/products#duvar-lambirileri") },
+        { label: "Kapı Lambirileri", href: localizedPath(locale, "/products#kapi-lambirileri") },
+        { label: "Kapı Pervazı", href: localizedPath(locale, "/products#kapi-pervazi") },
+        { label: "Pencere Pervazı", href: localizedPath(locale, "/products#pencere-pervazi") },
+      ],
+    },
+    en: {
+      title: "Our Products",
+      items: [
+        { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+        { label: "Ceiling Claddings", href: localizedPath(locale, "/products#tavan-lambirileri") },
+        { label: "Wall Claddings", href: localizedPath(locale, "/products#duvar-lambirileri") },
+        { label: "Door Claddings", href: localizedPath(locale, "/products#kapi-lambirileri") },
+        { label: "Door Trim", href: localizedPath(locale, "/products#kapi-pervazi") },
+        { label: "Window Trim", href: localizedPath(locale, "/products#pencere-pervazi") },
+      ],
+    },
+    de: {
+      title: "Unsere Produkte",
+      items: [
+        { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+        { label: "Deckenverkleidungen", href: localizedPath(locale, "/products#tavan-lambirileri") },
+        { label: "Wandverkleidungen", href: localizedPath(locale, "/products#duvar-lambirileri") },
+        { label: "Türverkleidungen", href: localizedPath(locale, "/products#kapi-lambirileri") },
+        { label: "Türleiste", href: localizedPath(locale, "/products#kapi-pervazi") },
+        { label: "Fensterleiste", href: localizedPath(locale, "/products#pencere-pervazi") },
+      ],
+    },
+    ar: {
+      title: "منتجاتنا",
+      items: [
+        { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+        { label: "كسوات السقف", href: localizedPath(locale, "/products#tavan-lambirileri") },
+        { label: "كسوات الجدران", href: localizedPath(locale, "/products#duvar-lambirileri") },
+        { label: "كسوات الأبواب", href: localizedPath(locale, "/products#kapi-lambirileri") },
+        { label: "إطار الباب", href: localizedPath(locale, "/products#kapi-pervazi") },
+        { label: "إطار النافذة", href: localizedPath(locale, "/products#pencere-pervazi") },
+      ],
+    },
+    az: {
+      title: "Məhsullarımız",
+      items: [
+        { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+        { label: "Tavan Lambiriləri", href: localizedPath(locale, "/products#tavan-lambirileri") },
+        { label: "Divar Lambiriləri", href: localizedPath(locale, "/products#duvar-lambirileri") },
+        { label: "Qapı Lambiriləri", href: localizedPath(locale, "/products#kapi-lambirileri") },
+        { label: "Qapı Pərvazı", href: localizedPath(locale, "/products#kapi-pervazi") },
+        { label: "Pəncərə Pərvazı", href: localizedPath(locale, "/products#pencere-pervazi") },
+      ],
+    },
+    bg: {
+      title: "Нашите продукти",
+      items: [
+        { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+        { label: "Таванни Ламперии", href: localizedPath(locale, "/products#tavan-lambirileri") },
+        { label: "Стенни Ламперии", href: localizedPath(locale, "/products#duvar-lambirileri") },
+        { label: "Ламперии За Врати", href: localizedPath(locale, "/products#kapi-lambirileri") },
+        { label: "Перваз За Врата", href: localizedPath(locale, "/products#kapi-pervazi") },
+        { label: "Перваз За Прозорец", href: localizedPath(locale, "/products#pencere-pervazi") },
+      ],
+    },
+    fr: {
+      title: "Nos Produits",
+      items: [
+        { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+        { label: "Lambris De Plafond", href: localizedPath(locale, "/products#tavan-lambirileri") },
+        { label: "Lambris Muraux", href: localizedPath(locale, "/products#duvar-lambirileri") },
+        { label: "Lambris De Porte", href: localizedPath(locale, "/products#kapi-lambirileri") },
+        { label: "Moulure De Porte", href: localizedPath(locale, "/products#kapi-pervazi") },
+        { label: "Moulure De Fenêtre", href: localizedPath(locale, "/products#pencere-pervazi") },
+      ],
+    },
+    ru: {
+      title: "Наша Продукция",
+      items: [
+        { label: "PVC", href: localizedPath(locale, "/products#pvc") },
+        { label: "Потолочные Ламбрии", href: localizedPath(locale, "/products#tavan-lambirileri") },
+        { label: "Стеновые Ламбрии", href: localizedPath(locale, "/products#duvar-lambirileri") },
+        { label: "Дверные Ламбрии", href: localizedPath(locale, "/products#kapi-lambirileri") },
+        { label: "Дверной Наличник", href: localizedPath(locale, "/products#kapi-pervazi") },
+        { label: "Оконный Наличник", href: localizedPath(locale, "/products#pencere-pervazi") },
+      ],
+    },
   };
   const socialTitleByLocale: Record<Locale, string> = {
     tr: "Sosyal Medyada Bizi Takip Edin",
@@ -111,9 +191,13 @@ export function Footer({ locale }: { locale: Locale }) {
             </p>
             <div className="mt-5 flex flex-col gap-3">
               {footerProductsByLocale[locale].items.map((item) => (
-                <span key={item} className="text-sm leading-6 text-white/78">
-                  {item}
-                </span>
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm leading-6 text-white/78 transition hover:text-white focus:outline-none focus:text-white"
+                >
+                  {item.label}
+                </Link>
               ))}
             </div>
           </div>
