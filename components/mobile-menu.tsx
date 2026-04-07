@@ -41,15 +41,15 @@ export function MobileMenu({
           />
           <div className="relative ml-auto flex h-full w-full max-w-[380px] flex-col bg-white px-5 pb-6 pt-5 shadow-lift">
             <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <div className="relative h-10 w-[140px] shrink-0 sm:h-11 sm:w-[152px]">
+              <div className="flex min-w-0 items-center gap-2.5">
+                <div className="relative h-11 w-[126px] shrink-0 sm:h-12 sm:w-[140px]">
                   <Image src={brand.logoSrc} alt={brand.name} fill className="object-contain object-left" sizes="(max-width: 640px) 140px, 152px" priority />
                 </div>
-                <div>
-                  <p className="font-display text-lg font-semibold tracking-[-0.04em] text-ink">
+                <div className="min-w-0">
+                  <p className="font-display text-base font-semibold tracking-[-0.04em] text-ink sm:text-lg">
                     {brand.name}
                   </p>
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-muted">
+                  <p className="text-[10px] uppercase tracking-[0.16em] text-muted">
                     {brand.subtitle}
                   </p>
                 </div>

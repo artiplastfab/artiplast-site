@@ -70,15 +70,15 @@ export function Footer({ locale }: { locale: Locale }) {
       <div className="container-shell py-14 sm:py-16">
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.8fr_0.95fr_0.8fr_0.9fr_1fr]">
           <div>
-            <div className="flex items-center gap-4">
-              <div className="relative h-12 w-[176px] shrink-0">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="relative h-11 w-[136px] shrink-0 sm:h-12 sm:w-[148px]">
                 <Image src="/logo/logo.jpg" alt={BRAND_NAME} fill className="object-contain object-left" sizes="176px" />
               </div>
-              <div>
-                <p className="font-display text-2xl font-semibold tracking-[-0.04em]">
+              <div className="min-w-0">
+                <p className="font-display text-xl font-semibold tracking-[-0.04em] sm:text-2xl">
                   {brand.name}
                 </p>
-                <p className="text-[11px] uppercase tracking-[0.2em] text-white/50">
+                <p className="text-[10px] uppercase tracking-[0.18em] text-white/50">
                   {brand.subtitle}
                 </p>
               </div>

@@ -15,15 +15,15 @@ export function Header({ locale }: { locale: Locale }) {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-white/92 backdrop-blur-xl">
       <div className="container-shell flex h-[84px] items-center justify-between gap-4">
-        <Link href={localizedPath(locale)} className="flex min-w-0 items-center gap-4">
-          <div className="relative h-10 w-[148px] shrink-0 sm:h-12 sm:w-[176px]">
+        <Link href={localizedPath(locale)} className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+          <div className="relative h-11 w-[124px] shrink-0 sm:h-14 sm:w-[156px]">
             <Image src={brand.logoSrc} alt={brand.name} fill className="object-contain object-left" sizes="(max-width: 640px) 148px, 176px" priority />
           </div>
-          <div className="min-w-0">
-            <p className="truncate font-display text-lg font-semibold tracking-[-0.04em] text-ink sm:text-xl">
+          <div className="min-w-0 flex-1">
+            <p className="font-display text-base font-semibold tracking-[-0.04em] text-ink sm:text-xl">
               {brand.name}
             </p>
-            <p className="text-[11px] uppercase tracking-[0.22em] text-muted sm:text-xs">
+            <p className="text-[10px] uppercase tracking-[0.18em] text-muted sm:text-xs">
               {brand.subtitle}
             </p>
           </div>
