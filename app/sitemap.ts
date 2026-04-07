@@ -6,7 +6,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.artiplast.com";
 
   const staticRoutes = locales.flatMap((locale) =>
-    ["", "/products", "/about", "/faq", "/contact"].map((path) => ({
+    [
+      "",
+      "/products",
+      "/katalog",
+      "/about",
+      "/info",
+      "/contact",
+      "/gizlilik-politikasi",
+      "/hizmet-kosullari",
+      "/teslimat-bilgilendirme",
+    ].map((path) => ({
       url: `${baseUrl}${localizedPath(locale, path)}`,
       lastModified: new Date(),
       changeFrequency: (path === "" ? "weekly" : "monthly") as "weekly" | "monthly",

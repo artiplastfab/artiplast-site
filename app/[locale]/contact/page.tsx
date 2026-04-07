@@ -65,7 +65,7 @@ export default async function ContactPage({
                       {card.value}
                     </a>
                   ) : (
-                    <p className="mt-2 text-sm leading-7 text-muted">{card.value}</p>
+                    <p className="mt-2 whitespace-pre-line text-sm leading-7 text-muted">{card.value}</p>
                   )}
                 </div>
               );
@@ -76,7 +76,7 @@ export default async function ContactPage({
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
                     {copy.labels.map}
                   </p>
-                  <p className="mt-3 text-sm text-muted">{ADDRESS}</p>
+                  <p className="mt-3 whitespace-pre-line text-sm text-muted">{ADDRESS}</p>
                 </div>
               </div>
             </div>

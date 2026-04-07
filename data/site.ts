@@ -9,7 +9,7 @@ export const PHONE_LINK = "tel:+905469610107";
 export const WHATSAPP_NUMBER = "905469610107";
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 export const ADDRESS =
-  "Organize Sanayi Bölgesi 6. Sokak No:7 70100 Karaman Türkiye";
+  "Organize Sanayi Bölgesi 6. Sokak No:7\nMerkez Karaman\nKaraman Türkiye 70100";
 
 export type Product = {
   slug: string;
@@ -495,8 +495,58 @@ export function getBrandInfo() {
   return { name: BRAND_NAME, subtitle: BRAND_SUBTITLE, logoSrc: "/logo/logo.jpg" };
 }
 
+const productNameOverrides: Record<Locale, Record<string, string>> = {
+  tr: {
+    "tavan-lambiri": "PVC",
+    "kaval-borusu": "Kapı Duvar Tavan Lambiri",
+    "duvar-lambiri": "Kapı Pencere Pervazı",
+  },
+  en: {
+    "tavan-lambiri": "PVC",
+    "kaval-borusu": "Door Wall Ceiling Cladding",
+    "duvar-lambiri": "Door Window Trim",
+  },
+  de: {
+    "tavan-lambiri": "PVC",
+    "kaval-borusu": "Tür Wand Deckenlambris",
+    "duvar-lambiri": "Tür Fensterleiste",
+  },
+  ar: {
+    "tavan-lambiri": "PVC",
+    "kaval-borusu": "كسوة الأبواب والجدران والأسقف",
+    "duvar-lambiri": "إطار الأبواب والنوافذ",
+  },
+  az: {
+    "tavan-lambiri": "PVC",
+    "kaval-borusu": "Qapı Divar Tavan Lambirisi",
+    "duvar-lambiri": "Qapı Pəncərə Pərvazı",
+  },
+  bg: {
+    "tavan-lambiri": "PVC",
+    "kaval-borusu": "Ламперия за врати стени тавани",
+    "duvar-lambiri": "Перваз за врати и прозорци",
+  },
+  fr: {
+    "tavan-lambiri": "PVC",
+    "kaval-borusu": "Lambris porte mur plafond",
+    "duvar-lambiri": "Moulure porte fenêtre",
+  },
+};
+
 export function getProducts(locale: Locale): Product[] {
-  return productSeeds.map((seed) => ({ slug: seed.slug, heroImage: seed.heroImage, cardImage: seed.cardImage, ...seed.translations[locale] }));
+  return productSeeds.map((seed) => {
+    const baseProduct = {
+      slug: seed.slug,
+      heroImage: seed.heroImage,
+      cardImage: seed.cardImage,
+      ...seed.translations[locale],
+    };
+
+    return {
+      ...baseProduct,
+      name: productNameOverrides[locale][seed.slug] ?? baseProduct.name,
+    };
+  });
 }
 
 export function getProductBySlug(locale: Locale, slug: string) {
@@ -564,13 +614,13 @@ export function getAboutSections(locale: Locale) {
 export function getFaqItems(locale: Locale) {
   return locale === "tr"
     ? [
-        { question: "Sitede hangi ürünler yer alıyor?", answer: "Tavan Lambiri, Kaval Borusu ve Duvar Lambiri ana ürün aileleri olarak sunuluyor." },
+        { question: "Sitede hangi ürünler yer alıyor?", answer: "PVC, Kapı Duvar Tavan Lambiri ve Kapı Pencere Pervazı ana ürün aileleri olarak sunuluyor." },
         { question: "Telefon ve WhatsApp hattı aynı mı?", answer: `Evet. ${PHONE_DISPLAY} numarası telefon ve WhatsApp için aktiftir.` },
         { question: "Adres bilgisi güncel mi?", answer: ADDRESS },
         { question: "Tüm dil seçenekleri aktif mi?", answer: "Evet. Türkçe, İngilizce, Almanca, Arapça, Azerbaycanca, Bulgarca ve Fransızca çalışır." },
       ]
     : [
-        { question: "Which products are presented on the site?", answer: "The site presents Ceiling Cladding, Round Profile Tube, and Wall Cladding as the core product families." },
+        { question: "Which products are presented on the site?", answer: "The site presents PVC, Door Wall Ceiling Cladding, and Door Window Trim as the core product families." },
         { question: "Is the same number used for phone and WhatsApp?", answer: `Yes. ${PHONE_DISPLAY} is active for both phone and WhatsApp.` },
         { question: "Is the address current?", answer: ADDRESS },
         { question: "Are all language options active?", answer: "Yes. Turkish, English, German, Arabic, Azerbaijani, Bulgarian, and French are available." },

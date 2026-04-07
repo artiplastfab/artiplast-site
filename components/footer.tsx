@@ -11,16 +11,19 @@ import {
   getFooterLinks,
   getUiCopy,
 } from "@/data/site";
+import { getLegalLinks, getLegalSectionTitle } from "@/data/legal";
 import { localeLabels, localizedPath, locales, type Locale } from "@/lib/i18n";
 
 export function Footer({ locale }: { locale: Locale }) {
   const links = getFooterLinks(locale);
   const copy = getUiCopy(locale);
+  const legalLinks = getLegalLinks(locale);
+  const legalTitle = getLegalSectionTitle(locale);
 
   return (
     <footer className="mt-24 bg-ink text-white">
       <div className="container-shell py-14 sm:py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.7fr_0.7fr_0.9fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.7fr_0.7fr_0.7fr_0.9fr]">
           <div>
             <div className="flex items-center gap-4">
               <div className="relative h-16 w-16 overflow-hidden rounded-[22px] border border-white/10 bg-white shadow-soft">
@@ -69,6 +72,19 @@ export function Footer({ locale }: { locale: Locale }) {
 
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
+              {legalTitle}
+            </p>
+            <div className="mt-5 flex flex-col gap-3">
+              {legalLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="text-sm text-white/78 transition hover:text-white">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
               {copy.footer.contact}
             </p>
             <div className="mt-5 space-y-4 text-sm text-white/78">
@@ -82,7 +98,7 @@ export function Footer({ locale }: { locale: Locale }) {
               </a>
               <div className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 text-accent" />
-                <span>{ADDRESS}</span>
+                <span className="whitespace-pre-line">{ADDRESS}</span>
               </div>
             </div>
           </div>

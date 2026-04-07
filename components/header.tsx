@@ -32,20 +32,23 @@ export function Header({ locale }: { locale: Locale }) {
         <nav className="hidden items-center gap-7 xl:flex">
           {navigation.map((item) =>
             item.children?.length ? (
-              <div key={item.href} className="group relative">
+              <div key={item.href} className="group relative py-5">
+                <div className="absolute left-0 top-full h-6 w-72" />
                 <Link href={item.href} className="text-sm font-medium text-muted transition hover:text-ink">
                   {item.label}
                 </Link>
-                <div className="pointer-events-none absolute left-0 top-[calc(100%+18px)] min-w-64 rounded-[24px] border border-border/60 bg-white p-2 opacity-0 shadow-soft transition group-hover:pointer-events-auto group-hover:opacity-100">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className="block rounded-2xl px-4 py-3 text-sm text-ink transition hover:bg-panel"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
+                <div className="pointer-events-none absolute left-0 top-full z-20 min-w-72 pt-6 opacity-0 transition delay-300 duration-200 group-hover:pointer-events-auto group-hover:opacity-100 group-hover:delay-0">
+                  <div className="rounded-[24px] border border-border/60 bg-white p-2 shadow-soft">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="block rounded-2xl px-4 py-3 text-sm text-ink transition hover:bg-panel"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : (
