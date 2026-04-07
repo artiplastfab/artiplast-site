@@ -54,8 +54,8 @@ export function Header({ locale }: { locale: Locale }) {
               </Link>
             ),
           )}
-          <SearchTrigger className="text-sm font-medium text-muted transition hover:text-accent">
-            <span>{copy.actions.search}</span>
+          <SearchTrigger className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white text-muted transition hover:border-accent hover:text-accent">
+            <Search className="h-4 w-4" />
           </SearchTrigger>
         </nav>
 
