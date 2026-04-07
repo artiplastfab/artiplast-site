@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { SearchProvider } from "@/components/search-provider";
-import { getSearchEntries } from "@/data/site";
-import { defaultLocale, locales, type Locale, isLocale } from "@/lib/i18n";
-import { buildMetadata } from "@/lib/metadata";
+import { SiteShell } from "@/components/site-shell";
+import { buildPageMetadata } from "@/lib/metadata";
+import { defaultLocale, isLocale, locales, type Locale } from "@/lib/i18n";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -18,13 +15,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const safeLocale: Locale = isLocale(locale) ? locale : defaultLocale;
 
-  return buildMetadata({
-    locale: safeLocale,
-    title: "ArtıPLASTİK",
-    description:
-      "ArtıPLASTİK is a Karaman-based Turkish manufacturer producing premium PVC, ceiling claddings, door claddings, wall claddings, and trim solutions for international buyers.",
-    path: "",
-  });
+  return buildPageMetadata(safeLocale, "home", "");
 }
 
 export default async function LocaleLayout({
@@ -37,13 +28,5 @@ export default async function LocaleLayout({
   const { locale } = await params;
   const safeLocale: Locale = isLocale(locale) ? locale : defaultLocale;
 
-  return (
-    <SearchProvider locale={safeLocale} entries={getSearchEntries(safeLocale)}>
-      <div className="min-h-screen">
-        <Header locale={safeLocale} />
-        <main>{children}</main>
-        <Footer locale={safeLocale} />
-      </div>
-    </SearchProvider>
-  );
+  return <SiteShell locale={safeLocale}>{children}</SiteShell>;
 }

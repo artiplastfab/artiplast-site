@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { VideoPlaceholder } from "@/components/video-placeholder";
 import { getFactoryGallery, getLocalizedAboutSections, getUiCopy } from "@/data/site";
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
-import { buildMetadata } from "@/lib/metadata";
+import { buildPageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
   params,
@@ -16,13 +16,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const safeLocale: Locale = isLocale(locale) ? locale : defaultLocale;
 
-  return buildMetadata({
-    locale: safeLocale,
-    title: "About",
-    description:
-    "Learn about ArtıPLASTİK, a Karaman-based manufacturer focused on premium product presentation and reliable production capability.",
-    path: "/about",
-  });
+  return buildPageMetadata(safeLocale, "about", "/about");
 }
 
 export default async function AboutPage({

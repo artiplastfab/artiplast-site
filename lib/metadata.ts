@@ -1,5 +1,15 @@
 import type { Metadata } from "next";
-import { localeLabels, localizedPath, type Locale } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n";
+import {
+  getLanguageAlternates,
+  getSeoEntry,
+  manufacturerRobots,
+  OG_IMAGE_URL,
+  ogLocaleByLocale,
+  SEO_BRAND_NAME,
+  SITE_URL,
+  type SeoPageKey,
+} from "@/lib/seo";
 
 export function buildMetadata({
   locale,
@@ -12,46 +22,50 @@ export function buildMetadata({
   description: string;
   path: string;
 }): Metadata {
-  const pageTitle = title === "ArtıPLASTİK" ? title : `${title} | ArtıPLASTİK`;
-  const url = `https://www.artiplast.com${localizedPath(locale, path)}`;
+  const url = `${SITE_URL}${getLanguageAlternates(path)[locale]!.replace(SITE_URL, "")}`;
 
   return {
-    title: pageTitle,
+    title: {
+      absolute: title,
+    },
     description,
+    robots: manufacturerRobots,
     alternates: {
       canonical: url,
-      languages: {
-        tr: `https://www.artiplast.com${localizedPath("tr", path)}`,
-        en: `https://www.artiplast.com${localizedPath("en", path)}`,
-        de: `https://www.artiplast.com${localizedPath("de", path)}`,
-        ar: `https://www.artiplast.com${localizedPath("ar", path)}`,
-        az: `https://www.artiplast.com${localizedPath("az", path)}`,
-        bg: `https://www.artiplast.com${localizedPath("bg", path)}`,
-        fr: `https://www.artiplast.com${localizedPath("fr", path)}`,
-        ru: `https://www.artiplast.com${localizedPath("ru", path)}`,
-      },
+      languages: getLanguageAlternates(path),
     },
     openGraph: {
-      title: pageTitle,
+      title,
       description,
       url,
-      siteName: "ArtıPLASTİK",
-      locale: localeLabels[locale].label,
+      siteName: SEO_BRAND_NAME,
+      locale: ogLocaleByLocale[locale],
       type: "website",
       images: [
         {
-          url: "https://www.artiplast.com/og-cover.jpg",
+          url: OG_IMAGE_URL,
           width: 1200,
           height: 630,
-          alt: "ArtıPLASTİK premium manufacturer website",
+          alt: `${SEO_BRAND_NAME} premium manufacturer website`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: pageTitle,
+      title,
       description,
-      images: ["https://www.artiplast.com/og-cover.jpg"],
+      images: [OG_IMAGE_URL],
     },
   };
+}
+
+export function buildPageMetadata(locale: Locale, page: SeoPageKey, path: string) {
+  const seo = getSeoEntry(locale, page);
+
+  return buildMetadata({
+    locale,
+    title: seo.title,
+    description: seo.description,
+    path,
+  });
 }

@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
 import { getProducts } from "@/data/site";
 import { localizedPath, locales } from "@/lib/i18n";
+import { SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.artiplast.com";
-
   const staticRoutes = locales.flatMap((locale) =>
     [
       "",
@@ -17,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/hizmet-kosullari",
       "/teslimat-bilgilendirme",
     ].map((path) => ({
-      url: `${baseUrl}${localizedPath(locale, path)}`,
+      url: `${SITE_URL}${localizedPath(locale, path)}`,
       lastModified: new Date(),
       changeFrequency: (path === "" ? "weekly" : "monthly") as "weekly" | "monthly",
       priority: path === "" ? 1 : 0.8,
@@ -26,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const productRoutes = locales.flatMap((locale) =>
     getProducts(locale).map((product) => ({
-      url: `${baseUrl}${localizedPath(locale, `/products/${product.slug}`)}`,
+      url: `${SITE_URL}${localizedPath(locale, `/products/${product.slug}`)}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,

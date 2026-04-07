@@ -1,10 +1,10 @@
+import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { ProductDetailSection } from "@/components/product-detail-section";
 import { Reveal } from "@/components/reveal";
 import { getProducts, getUiCopy } from "@/data/site";
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
-import { buildMetadata } from "@/lib/metadata";
-import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
   params,
@@ -14,13 +14,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const safeLocale: Locale = isLocale(locale) ? locale : defaultLocale;
 
-  return buildMetadata({
-    locale: safeLocale,
-    title: "Products",
-    description:
-    "Explore ArtıPLASTİK product categories including PVC, ceiling claddings, door claddings, wall claddings, and trim solutions.",
-    path: "/products",
-  });
+  return buildPageMetadata(safeLocale, "products", "/products");
 }
 
 export default async function ProductsPage({

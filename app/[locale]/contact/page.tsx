@@ -5,7 +5,7 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { ADDRESS, getContactCards, getUiCopy } from "@/data/site";
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
-import { buildMetadata } from "@/lib/metadata";
+import { buildPageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
   params,
@@ -15,12 +15,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const safeLocale: Locale = isLocale(locale) ? locale : defaultLocale;
 
-  return buildMetadata({
-    locale: safeLocale,
-    title: "Contact",
-  description: "Contact ArtıPLASTİK for product information, factory discussions, and future export-oriented inquiries.",
-    path: "/contact",
-  });
+  return buildPageMetadata(safeLocale, "contact", "/contact");
 }
 
 const icons = {

@@ -4,7 +4,7 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { getLocalizedFaqItems, getUiCopy } from "@/data/site";
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
-import { buildMetadata } from "@/lib/metadata";
+import { buildPageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
   params,
@@ -14,12 +14,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const safeLocale: Locale = isLocale(locale) ? locale : defaultLocale;
 
-  return buildMetadata({
-    locale: safeLocale,
-    title: "FAQ",
-  description: "Frequently asked questions about ArtıPLASTİK products, production communication, and contact flow.",
-    path: "/faq",
-  });
+  return buildPageMetadata(safeLocale, "info", "/info");
 }
 
 export default async function FaqPage({

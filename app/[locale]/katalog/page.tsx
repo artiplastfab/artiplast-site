@@ -3,7 +3,7 @@ import { ExternalLink, FileText } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
-import { buildMetadata } from "@/lib/metadata";
+import { buildPageMetadata } from "@/lib/metadata";
 
 const catalogCopy: Record<Locale, { title: string; description: string; button: string; preview: string }> = {
   tr: { title: "Katalog", description: "Ürün kataloğumuzu inceleyin veya indirin", button: "Kataloğu İndir", preview: "Katalog Önizleme" },
@@ -13,7 +13,7 @@ const catalogCopy: Record<Locale, { title: string; description: string; button: 
   az: { title: "Kataloq", description: "Məhsul kataloqumuzu nəzərdən keçirin və ya endirin", button: "Kataloqu Yüklə", preview: "Kataloq Önizləmə" },
   bg: { title: "Каталог", description: "Разгледайте или изтеглете продуктовия ни каталог", button: "Изтегли каталога", preview: "Преглед на каталога" },
   fr: { title: "Catalogue", description: "Consultez ou téléchargez notre catalogue de produits", button: "Télécharger le catalogue", preview: "Aperçu du catalogue" },
-  ru: { title: "Каталог", description: "Ознакомьтесь с нашим каталогом продукции или скачайте его", button: "Скачать Каталог", preview: "Предпросмотр Каталога" },
+  ru: { title: "Каталог", description: "Ознакомьтесь с нашим каталогом продукции или скачайте его", button: "Скачать каталог", preview: "Предпросмотр каталога" },
 };
 
 export async function generateMetadata({
@@ -23,14 +23,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const safeLocale: Locale = isLocale(locale) ? locale : defaultLocale;
-  const copy = catalogCopy[safeLocale];
 
-  return buildMetadata({
-    locale: safeLocale,
-    title: copy.title,
-    description: copy.description,
-    path: "/katalog",
-  });
+  return buildPageMetadata(safeLocale, "catalog", "/katalog");
 }
 
 export default async function CatalogPage({
