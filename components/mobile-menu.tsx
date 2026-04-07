@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import { Search, X } from "lucide-react";
-import { getBrandInfo, getUiCopy } from "@/data/site";
+import { getBrandInfo } from "@/data/site";
 import { useSearch } from "@/components/search-provider";
-import { localizedPath, type Locale } from "@/lib/i18n";
+import { type Locale } from "@/lib/i18n";
 
 type NavItem = {
   label: string;
@@ -24,7 +24,6 @@ export function MobileMenu({
   trigger: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
-  const copy = getUiCopy(locale);
   const brand = getBrandInfo();
   const { setOpen: setSearchOpen, setQuery } = useSearch();
 
@@ -56,6 +55,19 @@ export function MobileMenu({
                 <X className="h-5 w-5" />
               </button>
             </div>
+            <nav className="mt-8 flex flex-col gap-3">
+              {navigation.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-[24px] border border-border/60 bg-panel/45 px-5 py-4 text-base font-medium text-ink transition hover:border-accent/60 hover:text-accent"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
             <form
               className="mt-6"
               onSubmit={(event) => {
@@ -77,42 +89,6 @@ export function MobileMenu({
                 />
               </label>
             </form>
-
-            <div className="mt-6 flex flex-col gap-3 overflow-y-auto">
-              {navigation.map((item) => (
-                <div key={item.href} className="rounded-[24px] border border-border/60 bg-panel/45 px-5 py-4">
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="block text-base font-medium text-ink"
-                  >
-                    {item.label}
-                  </Link>
-                  {item.children?.length ? (
-                    <div className="mt-3 flex flex-col gap-2 border-t border-border/60 pt-3">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={() => setOpen(false)}
-                          className="text-sm text-muted transition hover:text-ink"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-              ))}
-            </div>
-
-            <Link
-              href={localizedPath(locale, "/contact")}
-              onClick={() => setOpen(false)}
-              className="mt-auto rounded-full bg-ink px-5 py-4 text-center text-sm font-semibold text-white transition hover:bg-accent"
-            >
-              {copy.actions.contact}
-            </Link>
           </div>
         </div>
       ) : null}
