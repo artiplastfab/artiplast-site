@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { Locale } from "@/lib/i18n";
+import { localizedPath, type Locale } from "@/lib/i18n";
 import {
   getLanguageAlternates,
   getSeoEntry,
@@ -22,7 +22,7 @@ export function buildMetadata({
   description: string;
   path: string;
 }): Metadata {
-  const url = `${SITE_URL}${getLanguageAlternates(path)[locale]!.replace(SITE_URL, "")}`;
+  const url = `${SITE_URL}${localizedPath(locale, path)}`;
 
   return {
     title: {
