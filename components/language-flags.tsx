@@ -22,7 +22,7 @@ export function LanguageFlags({
   const restPath = stripLocaleFromPathname(pathname);
 
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className={`flex items-center ${compact ? "flex-wrap gap-2" : "flex-nowrap gap-1.5"}`}>
       {locales.map((item) => {
         const active = item === locale;
 
@@ -35,7 +35,7 @@ export function LanguageFlags({
             className={`inline-flex items-center justify-center rounded-full border transition ${
               compact
                 ? "h-9 w-9 text-base"
-                : "h-10 min-w-10 px-2.5 text-[15px]"
+                : "h-9 min-w-9 px-2 text-sm"
             } ${
               active
                 ? "border-accent bg-accentSoft text-accent shadow-soft"
