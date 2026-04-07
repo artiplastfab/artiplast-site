@@ -54,6 +54,8 @@ type NavItem = {
 
 type LocaleCopy = {
   languageLabel: string;
+  brandSubtitle: string;
+  searchPlaceholder: string;
   navigation: Record<"home" | "products" | "catalog" | "about" | "faq" | "contact", string>;
   actions: Record<
     | "contact"
@@ -148,6 +150,8 @@ const commonContact = {
 
 const englishBase: LocaleCopy = {
   languageLabel: "English",
+  brandSubtitle: "Manufacturer",
+  searchPlaceholder: "Search...",
   navigation: { home: "Home", products: "Products", catalog: "Catalog", about: "About", faq: "FAQ", contact: "Contact" },
   actions: {
     contact: "Contact",
@@ -233,6 +237,8 @@ const englishBase: LocaleCopy = {
 const localeCopy: Record<Locale, LocaleCopy> = {
   tr: {
     languageLabel: "Türkçe",
+    brandSubtitle: "Üretici",
+    searchPlaceholder: "Arama...",
     navigation: { home: "Ana Sayfa", products: "Ürünler", catalog: "Katalog", about: "Hakkımızda", faq: "Bilgi", contact: "Bize Ulaşın" },
     actions: {
       contact: "Bize Ulaşın",
@@ -316,6 +322,8 @@ const localeCopy: Record<Locale, LocaleCopy> = {
   },
   en: {
     languageLabel: "English",
+    brandSubtitle: "Manufacturer",
+    searchPlaceholder: "Search...",
     navigation: { home: "Home", products: "Products", catalog: "Catalog", about: "About", faq: "Information", contact: "Contact Us" },
     actions: {
       contact: "Contact Us",
