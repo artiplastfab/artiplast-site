@@ -71,9 +71,13 @@ export function Footer({ locale }: { locale: Locale }) {
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.8fr_0.95fr_0.8fr_0.9fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <div className="relative h-11 w-[136px] shrink-0 sm:h-12 sm:w-[148px]">
-                <Image src="/logo/logo.jpg" alt={BRAND_NAME} fill className="object-contain object-left" sizes="176px" />
-              </div>
+              <Image
+                src="/logo/logo.jpg"
+                alt="ArtıPLASTİK Logo"
+                width={120}
+                height={120}
+                className="h-10 w-auto shrink-0 object-contain"
+              />
               <div className="min-w-0">
                 <p className="font-display text-xl font-semibold tracking-[-0.04em] sm:text-2xl">
                   {brand.name}

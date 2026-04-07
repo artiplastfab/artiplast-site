@@ -16,9 +16,14 @@ export function Header({ locale }: { locale: Locale }) {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-white/92 backdrop-blur-xl">
       <div className="container-shell flex h-[84px] items-center justify-between gap-4">
         <Link href={localizedPath(locale)} className="flex min-w-0 items-center gap-2.5 sm:gap-3">
-          <div className="relative h-11 w-[124px] shrink-0 sm:h-14 sm:w-[156px]">
-            <Image src={brand.logoSrc} alt={brand.name} fill className="object-contain object-left" sizes="(max-width: 640px) 148px, 176px" priority />
-          </div>
+          <Image
+            src="/logo/logo.jpg"
+            alt="ArtıPLASTİK Logo"
+            width={120}
+            height={120}
+            className="h-10 w-auto shrink-0 object-contain sm:h-[50px]"
+            priority
+          />
           <div className="min-w-0 flex-1">
             <p className="font-display text-base font-semibold tracking-[-0.04em] text-ink sm:text-xl">
               {brand.name}
