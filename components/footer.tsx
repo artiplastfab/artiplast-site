@@ -21,7 +21,7 @@ export function Footer({ locale }: { locale: Locale }) {
   const legalLinks = getLegalLinks(locale);
   const legalTitle = getLegalSectionTitle(locale);
   const footerProductsByLocale: Record<Locale, { title: string; items: string[] }> = {
-    tr: { title: "Ürünlerimiz", items: ["PVC", "Kapı, Duvar ve Tavan Lambirileri", "Kapı ve Pencere Pervazı"] },
+    tr: { title: "Ürünlerimiz", items: ["PVC", "Tavan Lambirileri", "Duvar Lambirileri", "Kapı Lambirileri", "Kapı Pervazı", "Pencere Pervazı"] },
     en: { title: "Our Products", items: ["PVC", "Door, Wall and Ceiling Claddings", "Door and Window Trim"] },
     de: { title: "Unsere Produkte", items: ["PVC", "Tür-, Wand- und Deckenverkleidungen", "Tür- und Fensterleiste"] },
     ar: { title: "منتجاتنا", items: ["PVC", "كسوات الأبواب والجدران والأسقف", "إطار الأبواب والنوافذ"] },
