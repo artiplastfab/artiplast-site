@@ -31,7 +31,7 @@ export function MobileMenu({
     <>
       <div onClick={() => setOpen(true)}>{trigger}</div>
       {open ? (
-        <div className="fixed inset-0 z-50 bg-ink/35 backdrop-blur-sm">
+        <div className="fixed inset-0 z-[80] bg-white">
           <div className="ml-auto flex h-full w-full max-w-[360px] flex-col bg-white px-5 pb-6 pt-5 shadow-lift">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
