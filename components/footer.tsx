@@ -4,10 +4,10 @@ import { MapPin, MessageCircle, Phone } from "lucide-react";
 import {
   ADDRESS,
   BRAND_NAME,
-  BRAND_SUBTITLE,
   PHONE_DISPLAY,
   PHONE_LINK,
   WHATSAPP_LINK,
+  getBrandInfo,
   getFooterLinks,
   getUiCopy,
 } from "@/data/site";
@@ -17,6 +17,7 @@ import { localeLabels, localizedPath, locales, type Locale } from "@/lib/i18n";
 export function Footer({ locale }: { locale: Locale }) {
   const links = getFooterLinks(locale);
   const copy = getUiCopy(locale);
+  const brand = getBrandInfo(locale);
   const legalLinks = getLegalLinks(locale);
   const legalTitle = getLegalSectionTitle(locale);
 
@@ -31,10 +32,10 @@ export function Footer({ locale }: { locale: Locale }) {
               </div>
               <div>
                 <p className="font-display text-2xl font-semibold tracking-[-0.04em]">
-                  {BRAND_NAME}
+                  {brand.name}
                 </p>
                 <p className="text-[11px] uppercase tracking-[0.2em] text-white/50">
-                  {BRAND_SUBTITLE}
+                  {brand.subtitle}
                 </p>
               </div>
             </div>

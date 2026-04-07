@@ -14,7 +14,7 @@ export function CTASection({
   description: string;
 }) {
   const copy = getUiCopy(locale);
-  const brand = getBrandInfo();
+  const brand = getBrandInfo(locale);
 
   return (
     <section className="container-shell mt-24">

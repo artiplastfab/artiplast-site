@@ -10,7 +10,7 @@ import { localizedPath, type Locale } from "@/lib/i18n";
 export function Header({ locale }: { locale: Locale }) {
   const navigation = getNavigation(locale);
   const copy = getUiCopy(locale);
-  const brand = getBrandInfo();
+  const brand = getBrandInfo(locale);
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-white/92 backdrop-blur-xl">

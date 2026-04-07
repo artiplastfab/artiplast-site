@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AccordionList } from "@/components/accordion-list";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { getFaqItems, getUiCopy } from "@/data/site";
+import { getLocalizedFaqItems, getUiCopy } from "@/data/site";
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -28,7 +28,7 @@ export default async function FaqPage({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
-  const items = getFaqItems(locale);
+  const items = getLocalizedFaqItems(locale);
   const copy = getUiCopy(locale);
 
   return (

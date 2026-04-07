@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import { Search, X } from "lucide-react";
-import { getBrandInfo } from "@/data/site";
+import { getBrandInfo, getUiCopy } from "@/data/site";
 import { useSearch } from "@/components/search-provider";
 import { type Locale } from "@/lib/i18n";
 
@@ -24,15 +24,22 @@ export function MobileMenu({
   trigger: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
-  const brand = getBrandInfo();
+  const brand = getBrandInfo(locale);
+  const copy = getUiCopy(locale);
   const { setOpen: setSearchOpen, setQuery } = useSearch();
 
   return (
     <>
       <div onClick={() => setOpen(true)}>{trigger}</div>
       {open ? (
-        <div className="fixed inset-0 z-[80] bg-white">
-          <div className="ml-auto flex h-full w-full max-w-[360px] flex-col bg-white px-5 pb-6 pt-5 shadow-lift">
+        <div className="fixed inset-0 z-[90]">
+          <button
+            type="button"
+            aria-label="Close menu overlay"
+            onClick={() => setOpen(false)}
+            className="absolute inset-0 bg-black/35"
+          />
+          <div className="relative ml-auto flex h-full w-full max-w-[380px] flex-col bg-white px-5 pb-6 pt-5 shadow-lift">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div className="relative h-12 w-12 overflow-hidden rounded-[18px] border border-border/60 bg-white shadow-soft">
@@ -61,7 +68,7 @@ export function MobileMenu({
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-[24px] border border-border/60 bg-panel/45 px-5 py-4 text-base font-medium text-ink transition hover:border-accent/60 hover:text-accent"
+                  className="rounded-[24px] border border-border bg-white px-5 py-4 text-base font-medium text-ink shadow-soft transition hover:border-accent hover:text-accent"
                 >
                   {item.label}
                 </Link>
@@ -79,13 +86,13 @@ export function MobileMenu({
                 setSearchOpen(true);
               }}
             >
-              <label className="flex h-12 items-center gap-3 rounded-full border border-border/70 bg-panel/55 px-4">
+              <label className="flex h-12 items-center gap-3 rounded-full border border-border bg-white px-4 shadow-soft">
                 <Search className="h-4 w-4 text-accent" />
                 <input
                   name="menu-search"
                   type="search"
-                  placeholder="Arama..."
-                  className="w-full bg-transparent text-sm text-ink outline-none placeholder:text-muted"
+                  placeholder={copy.searchPlaceholder}
+                  className="w-full bg-white text-sm text-ink outline-none placeholder:text-ink/55"
                 />
               </label>
             </form>

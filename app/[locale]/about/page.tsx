@@ -4,7 +4,7 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { VideoPlaceholder } from "@/components/video-placeholder";
-import { getAboutSections, getFactoryGallery, getUiCopy } from "@/data/site";
+import { getFactoryGallery, getLocalizedAboutSections, getUiCopy } from "@/data/site";
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -31,7 +31,7 @@ export default async function AboutPage({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
-  const sections = getAboutSections(locale);
+  const sections = getLocalizedAboutSections(locale);
   const gallery = getFactoryGallery(locale);
   const copy = getUiCopy(locale);
 
