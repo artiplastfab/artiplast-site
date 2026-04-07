@@ -17,6 +17,76 @@ export const localeLabels: Record<
   fr: { label: "FR", nativeLabel: "Français", flag: "🇫🇷", dir: "ltr" },
 };
 
+const languageNamesByUiLocale: Record<Locale, Record<Locale, string>> = {
+  tr: {
+    tr: "Türkçe",
+    en: "İngilizce",
+    de: "Almanca",
+    ar: "Arapça",
+    az: "Azerbaycan Türkçesi",
+    bg: "Bulgarca",
+    fr: "Fransızca",
+  },
+  en: {
+    tr: "Turkish",
+    en: "English",
+    de: "German",
+    ar: "Arabic",
+    az: "Azerbaijani",
+    bg: "Bulgarian",
+    fr: "French",
+  },
+  de: {
+    tr: "Türkisch",
+    en: "Englisch",
+    de: "Deutsch",
+    ar: "Arabisch",
+    az: "Aserbaidschanisch",
+    bg: "Bulgarisch",
+    fr: "Französisch",
+  },
+  ar: {
+    tr: "التركية",
+    en: "الإنجليزية",
+    de: "الألمانية",
+    ar: "العربية",
+    az: "الأذربيجانية",
+    bg: "البلغارية",
+    fr: "الفرنسية",
+  },
+  az: {
+    tr: "Türkcə",
+    en: "İngiliscə",
+    de: "Almanca",
+    ar: "Ərəbcə",
+    az: "Azərbaycan Türkçəsi",
+    bg: "Bolqarca",
+    fr: "Fransızca",
+  },
+  bg: {
+    tr: "Турски",
+    en: "Английски",
+    de: "Немски",
+    ar: "Арабски",
+    az: "Азербайджански",
+    bg: "Български",
+    fr: "Френски",
+  },
+  fr: {
+    tr: "Turc",
+    en: "Anglais",
+    de: "Allemand",
+    ar: "Arabe",
+    az: "Azéri",
+    bg: "Bulgare",
+    fr: "Français",
+  },
+};
+
+export function getLocaleDisplayName(uiLocale: Locale, targetLocale: Locale) {
+  return languageNamesByUiLocale[uiLocale][targetLocale];
+}
+
 export function isLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
 }

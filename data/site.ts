@@ -679,6 +679,50 @@ export function getSpecPlaceholders(locale: Locale) {
 
 export function getNavigation(locale: Locale): NavItem[] {
   const c = copy(locale);
+  const aboutChildrenByLocale: Record<Locale, Array<{ label: string; href: string }>> = {
+    tr: [
+      { label: "Fabrikamız", href: localizedPath(locale, "/about#fabrikamiz") },
+      { label: "Ürünlerimiz", href: localizedPath(locale, "/products") },
+      { label: "Hizmetlerimiz", href: localizedPath(locale, "/about#hizmetlerimiz") },
+      { label: "Neden Bizi Seçmelisiniz", href: localizedPath(locale, "/about#neden-biz") },
+    ],
+    en: [
+      { label: "Our Factory", href: localizedPath(locale, "/about#fabrikamiz") },
+      { label: "Our Products", href: localizedPath(locale, "/products") },
+      { label: "Our Services", href: localizedPath(locale, "/about#hizmetlerimiz") },
+      { label: "Why Choose Us", href: localizedPath(locale, "/about#neden-biz") },
+    ],
+    de: [
+      { label: "Unsere Fabrik", href: localizedPath(locale, "/about#fabrikamiz") },
+      { label: "Unsere Produkte", href: localizedPath(locale, "/products") },
+      { label: "Unsere Leistungen", href: localizedPath(locale, "/about#hizmetlerimiz") },
+      { label: "Warum Wir", href: localizedPath(locale, "/about#neden-biz") },
+    ],
+    ar: [
+      { label: "مصنعنا", href: localizedPath(locale, "/about#fabrikamiz") },
+      { label: "منتجاتنا", href: localizedPath(locale, "/products") },
+      { label: "خدماتنا", href: localizedPath(locale, "/about#hizmetlerimiz") },
+      { label: "لماذا نحن", href: localizedPath(locale, "/about#neden-biz") },
+    ],
+    az: [
+      { label: "Zavodumuz", href: localizedPath(locale, "/about#fabrikamiz") },
+      { label: "Məhsullarımız", href: localizedPath(locale, "/products") },
+      { label: "Xidmətlərimiz", href: localizedPath(locale, "/about#hizmetlerimiz") },
+      { label: "Niyə Biz", href: localizedPath(locale, "/about#neden-biz") },
+    ],
+    bg: [
+      { label: "Нашата фабрика", href: localizedPath(locale, "/about#fabrikamiz") },
+      { label: "Нашите продукти", href: localizedPath(locale, "/products") },
+      { label: "Нашите услуги", href: localizedPath(locale, "/about#hizmetlerimiz") },
+      { label: "Защо нас", href: localizedPath(locale, "/about#neden-biz") },
+    ],
+    fr: [
+      { label: "Notre usine", href: localizedPath(locale, "/about#fabrikamiz") },
+      { label: "Nos produits", href: localizedPath(locale, "/products") },
+      { label: "Nos services", href: localizedPath(locale, "/about#hizmetlerimiz") },
+      { label: "Pourquoi nous", href: localizedPath(locale, "/about#neden-biz") },
+    ],
+  };
   const productChildren = getProducts(locale).map((product) => ({
     label: product.name,
     href: localizedPath(locale, `/products/${product.slug}`),
@@ -686,7 +730,7 @@ export function getNavigation(locale: Locale): NavItem[] {
 
   return [
     { label: c.navigation.home, href: localizedPath(locale) },
-    { label: c.navigation.about, href: localizedPath(locale, "/about") },
+    { label: c.navigation.about, href: localizedPath(locale, "/about"), children: aboutChildrenByLocale[locale] },
     { label: c.navigation.products, href: localizedPath(locale, "/products"), children: productChildren },
     { label: c.navigation.catalog, href: localizedPath(locale, "/katalog") },
     { label: c.navigation.faq, href: localizedPath(locale, "/info") },

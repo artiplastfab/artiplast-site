@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { getUiCopy } from "@/data/site";
 import {
+  getLocaleDisplayName,
   localeLabels,
   localizedPath,
   locales,
@@ -43,7 +44,7 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
       >
         <Globe2 className="h-4 w-4 text-accent" />
         <span>{localeLabels[locale].flag}</span>
-        <span>{localeLabels[locale].label}</span>
+        <span>{getLocaleDisplayName(locale, locale)}</span>
       </button>
 
       {open ? (
@@ -57,7 +58,7 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
             >
               <span className="flex items-center gap-3">
                 <span>{localeLabels[item].flag}</span>
-                <span>{`${localeLabels[item].label} ${localeLabels[item].nativeLabel}`}</span>
+                <span>{getLocaleDisplayName(locale, item)}</span>
               </span>
               {item === locale ? (
                 <span className="rounded-full bg-accentSoft px-2 py-1 text-[11px] font-semibold text-accent">

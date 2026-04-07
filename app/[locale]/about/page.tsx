@@ -43,7 +43,7 @@ export default async function AboutPage({
         description={copy.pages.about.description}
       />
 
-      <section className="container-shell mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+      <section id="fabrikamiz" className="container-shell mt-10 scroll-mt-28 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <Reveal>
           <div className="panel p-8 sm:p-10">
             <SectionHeading
@@ -67,7 +67,7 @@ export default async function AboutPage({
         </Reveal>
       </section>
 
-      <section className="container-shell mt-24">
+      <section id="hizmetlerimiz" className="container-shell mt-24 scroll-mt-28">
         <Reveal>
           <SectionHeading
             eyebrow={copy.home.factoryPreviewEyebrow}
@@ -80,7 +80,7 @@ export default async function AboutPage({
         </div>
       </section>
 
-      <section className="container-shell mt-24 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <section id="neden-biz" className="container-shell mt-24 scroll-mt-28 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <Reveal>
           <VideoPlaceholder locale={locale} />
         </Reveal>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  getLocaleDisplayName,
   localeLabels,
   localizedPath,
   locales,
@@ -29,7 +30,8 @@ export function LanguageFlags({
           <Link
             key={item}
             href={localizedPath(item, restPath === "/" ? "" : restPath)}
-            aria-label={localeLabels[item].nativeLabel}
+            aria-label={getLocaleDisplayName(locale, item)}
+            title={getLocaleDisplayName(locale, item)}
             className={`inline-flex items-center justify-center rounded-full border transition ${
               compact
                 ? "h-9 w-9 text-base"
