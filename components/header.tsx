@@ -16,8 +16,8 @@ export function Header({ locale }: { locale: Locale }) {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-white/92 backdrop-blur-xl">
       <div className="container-shell flex h-[84px] items-center justify-between gap-4">
         <Link href={localizedPath(locale)} className="flex min-w-0 items-center gap-4">
-          <div className="relative h-14 w-14 overflow-hidden rounded-[20px] border border-border/60 bg-white shadow-soft sm:h-16 sm:w-16">
-            <Image src={brand.logoSrc} alt={brand.name} fill className="object-cover" sizes="64px" />
+          <div className="relative h-10 w-[148px] shrink-0 sm:h-12 sm:w-[176px]">
+            <Image src={brand.logoSrc} alt={brand.name} fill className="object-contain object-left" sizes="(max-width: 640px) 148px, 176px" priority />
           </div>
           <div className="min-w-0">
             <p className="truncate font-display text-lg font-semibold tracking-[-0.04em] text-ink sm:text-xl">

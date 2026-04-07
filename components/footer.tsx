@@ -69,8 +69,8 @@ export function Footer({ locale }: { locale: Locale }) {
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.8fr_0.95fr_0.8fr_0.9fr_1fr]">
           <div>
             <div className="flex items-center gap-4">
-              <div className="relative h-16 w-16 overflow-hidden rounded-[22px] border border-white/10 bg-white shadow-soft">
-                <Image src="/logo/logo.jpg" alt={BRAND_NAME} fill className="object-cover" sizes="64px" />
+              <div className="relative h-12 w-[176px] shrink-0">
+                <Image src="/logo.jpg" alt={BRAND_NAME} fill className="object-contain object-left" sizes="176px" />
               </div>
               <div>
                 <p className="font-display text-2xl font-semibold tracking-[-0.04em]">
