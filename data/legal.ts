@@ -2,14 +2,223 @@ import { localizedPath, type Locale } from "@/lib/i18n";
 
 export type LegalKey = "privacy" | "terms" | "delivery";
 
-const legalDictionary: Record<
-  Locale,
-  {
-    sectionTitle: string;
-    labels: Record<LegalKey, string>;
-    pages: Record<LegalKey, { title: string; description: string; paragraphs: string[] }>;
-  }
-> = {
+export type LegalBlock =
+  | { type: "paragraph"; content: string }
+  | { type: "section"; title: string; paragraphs?: string[]; items?: string[] };
+
+export type LegalPageContent = {
+  title: string;
+  description: string;
+  blocks: LegalBlock[];
+};
+
+type LegalDictionaryEntry = {
+  sectionTitle: string;
+  labels: Record<LegalKey, string>;
+  pages: Record<LegalKey, LegalPageContent>;
+};
+
+const turkishPages: Record<LegalKey, LegalPageContent> = {
+  privacy: {
+    title: "Gizlilik Politikası",
+    description: "ArtıPLAST olarak ziyaretçilerimizin gizliliğini korumayı taahhüt ederiz. Bu politika, web sitemizi ziyaret ettiğinizde hangi bilgilerin toplandığını, nasıl kullanıldığını ve nasıl korunduğunu açıklar.",
+    blocks: [
+      {
+        type: "paragraph",
+        content:
+          "ArtıPLAST olarak ziyaretçilerimizin gizliliğini korumayı taahhüt ederiz. Bu politika, web sitemizi ziyaret ettiğinizde hangi bilgilerin toplandığını, nasıl kullanıldığını ve nasıl korunduğunu açıklar.",
+      },
+      {
+        type: "section",
+        title: "Toplanan Veriler",
+        paragraphs: [
+          "Web sitemizi ziyaret ettiğinizde IP adresi, tarayıcı türü, ziyaret süresi ve sayfa görüntüleme gibi teknik veriler otomatik olarak toplanabilir. Bu veriler sistem güvenliği ve analiz amaçlı kullanılır.",
+        ],
+      },
+      {
+        type: "section",
+        title: "Kişisel Veriler",
+        paragraphs: [
+          "İletişim formları veya doğrudan iletişim yoluyla paylaştığınız ad, soyad, telefon ve e-posta bilgileri yalnızca sizinle iletişim kurmak amacıyla kullanılmaktadır.",
+        ],
+      },
+      {
+        type: "section",
+        title: "Verilerin Kullanım Amaçları",
+        items: [
+          "Müşteri taleplerine yanıt vermek",
+          "Hizmet kalitesini artırmak",
+          "Web sitesi performansını analiz etmek",
+        ],
+      },
+      {
+        type: "section",
+        title: "Veri Güvenliği",
+        paragraphs: [
+          "Kişisel verileriniz güvenli sistemlerde saklanır ve üçüncü kişilerle paylaşılmaz. Ancak yasal zorunluluklar kapsamında resmi kurumlarla paylaşılabilir.",
+        ],
+      },
+      {
+        type: "section",
+        title: "Haklarınız",
+        paragraphs: [
+          "Kişisel verilerinizle ilgili bilgi talep etme, düzeltme veya silinmesini isteme hakkına sahipsiniz.",
+        ],
+      },
+      {
+        type: "section",
+        title: "İletişim",
+        paragraphs: [
+          "Gizlilik ile ilgili tüm sorularınız için bizimle iletişime geçebilirsiniz.",
+        ],
+      },
+    ],
+  },
+  terms: {
+    title: "Hizmet Koşulları",
+    description: "Bu web sitesini kullanan tüm ziyaretçiler aşağıdaki şartları kabul etmiş sayılır.",
+    blocks: [
+      {
+        type: "paragraph",
+        content: "Bu web sitesini kullanan tüm ziyaretçiler aşağıdaki şartları kabul etmiş sayılır.",
+      },
+      {
+        type: "section",
+        title: "Kullanım Şartları",
+        paragraphs: [
+          "Site içeriği yalnızca bilgilendirme amaçlıdır. İçerikler izinsiz kopyalanamaz, çoğaltılamaz veya ticari amaçla kullanılamaz.",
+        ],
+      },
+      {
+        type: "section",
+        title: "Sorumluluk Reddi",
+        paragraphs: [
+          "ArtıPLAST, site üzerinde yer alan bilgilerin doğruluğu konusunda azami özeni gösterir ancak oluşabilecek hatalardan dolayı sorumluluk kabul etmez.",
+        ],
+      },
+      {
+        type: "section",
+        title: "Ürün Bilgileri",
+        paragraphs: [
+          "Ürün görselleri ve açıklamaları temsilidir. Teknik özelliklerde değişiklik yapılabilir.",
+        ],
+      },
+      {
+        type: "section",
+        title: "Üçüncü Taraf Bağlantılar",
+        paragraphs: [
+          "Site üzerinde yer alan dış bağlantılar üçüncü taraf sitelere yönlendirebilir. Bu sitelerin içeriklerinden ArtıPLAST sorumlu değildir.",
+        ],
+      },
+      {
+        type: "section",
+        title: "Değişiklik Hakkı",
+        paragraphs: [
+          "ArtıPLAST, bu hizmet koşullarını önceden bildirmeksizin değiştirme hakkını saklı tutar.",
+        ],
+      },
+      {
+        type: "section",
+        title: "Yasal Haklar",
+        paragraphs: [
+          "Site içeriği ve tasarımının tüm hakları ArtıPLAST’a aittir.",
+        ],
+      },
+    ],
+  },
+  delivery: {
+    title: "Teslimat ve Bilgilendirme",
+    description: "ArtıPLAST ürünleri sipariş ve üretim süreçlerine bağlı olarak müşterilere ulaştırılmaktadır.",
+    blocks: [
+      {
+        type: "paragraph",
+        content: "ArtıPLAST ürünleri sipariş ve üretim süreçlerine bağlı olarak müşterilere ulaştırılmaktadır.",
+      },
+      {
+        type: "section",
+        title: "Sipariş Süreci",
+        paragraphs: [
+          "Ürünler sipariş üzerine üretilebilir ve talepler doğrultusunda planlanır.",
+        ],
+      },
+      {
+        type: "section",
+        title: "Teslimat Süreci",
+        paragraphs: [
+          "Teslimatlar anlaşmalı lojistik firmaları aracılığıyla yapılır.",
+        ],
+      },
+      {
+        type: "section",
+        title: "Teslimat Süresi",
+        paragraphs: [
+          "Teslim süresi sipariş miktarı, üretim planı ve stok durumuna bağlı olarak değişiklik gösterebilir.",
+        ],
+      },
+      {
+        type: "section",
+        title: "Sorumluluk",
+        paragraphs: [
+          "Kargo ve lojistik süreçlerinde yaşanabilecek gecikmelerden ArtıPLAST sorumlu değildir.",
+        ],
+      },
+      {
+        type: "section",
+        title: "Bilgilendirme",
+        paragraphs: [
+          "Müşterilere sipariş süreci boyunca gerekli bilgilendirme yapılır ve destek sağlanır.",
+        ],
+      },
+      {
+        type: "section",
+        title: "İletişim",
+        paragraphs: [
+          "Teslimat ve sipariş süreçleri hakkında bilgi almak için bizimle iletişime geçebilirsiniz.",
+        ],
+      },
+    ],
+  },
+};
+
+function buildFallbackPages(localeName: string): Record<LegalKey, LegalPageContent> {
+  return {
+    privacy: {
+      title: "Privacy Policy",
+      description: `${localeName} privacy information for ArtıPLAST website visitors.`,
+      blocks: [
+        {
+          type: "paragraph",
+          content:
+            "This page presents the privacy principles used for the ArtıPLAST website and contact processes.",
+        },
+      ],
+    },
+    terms: {
+      title: "Terms of Service",
+      description: `${localeName} terms for using the ArtıPLAST website.`,
+      blocks: [
+        {
+          type: "paragraph",
+          content:
+            "This page outlines the general terms for using the ArtıPLAST website and reviewing its content.",
+        },
+      ],
+    },
+    delivery: {
+      title: "Delivery & Information",
+      description: `${localeName} delivery and order information for ArtıPLAST.`,
+      blocks: [
+        {
+          type: "paragraph",
+          content:
+            "This page summarizes delivery planning, order communication, and production information for ArtıPLAST.",
+        },
+      ],
+    },
+  };
+}
+
+const legalDictionary: Record<Locale, LegalDictionaryEntry> = {
   tr: {
     sectionTitle: "Yasal",
     labels: {
@@ -17,32 +226,7 @@ const legalDictionary: Record<
       terms: "Hizmet Koşulları",
       delivery: "Teslimat ve Bilgilendirme",
     },
-    pages: {
-      privacy: {
-        title: "Gizlilik Politikası",
-        description: "ArtıPLAST web sitesi ziyaretçilerine yönelik temel gizlilik bilgilendirmesi.",
-        paragraphs: [
-          "ArtıPLAST, iletişim formları ve temel ziyaret etkileşimleri üzerinden paylaşılan bilgileri yalnızca müşteri iletişimi ve teklif süreçlerini desteklemek amacıyla değerlendirir.",
-          "Kişisel veriler, yürürlükteki mevzuata uygun şekilde korunur ve talep halinde güncelleme veya silme süreçleri başlatılabilir.",
-        ],
-      },
-      terms: {
-        title: "Hizmet Koşulları",
-        description: "ArtıPLAST web sitesi ve içeriklerinin kullanımına ilişkin genel koşullar.",
-        paragraphs: [
-          "Sitede yer alan ürün, görsel ve kurumsal içerikler bilgilendirme amaçlıdır; teknik detaylar ve özel üretim koşulları teklif aşamasında ayrıca netleştirilir.",
-          "ArtıPLAST, içerikleri önceden bildirim yapmadan güncelleme hakkını saklı tutar ve tüm marka unsurları ilgili haklar kapsamında korunur.",
-        ],
-      },
-      delivery: {
-        title: "Teslimat ve Bilgilendirme",
-        description: "Sipariş, üretim ve bilgilendirme süreçlerine dair kısa açıklama.",
-        paragraphs: [
-          "Teslimat planlaması ürün grubu, miktar, özel üretim ihtiyacı ve sevkiyat bölgesine göre teklif sürecinde belirlenir.",
-          "Net termin, paketleme ve sevkiyat detayları, müşteri talebi doğrultusunda satış ekibi tarafından yazılı olarak paylaşılır.",
-        ],
-      },
-    },
+    pages: turkishPages,
   },
   en: {
     sectionTitle: "Legal",
@@ -51,32 +235,7 @@ const legalDictionary: Record<
       terms: "Terms of Service",
       delivery: "Delivery & Information",
     },
-    pages: {
-      privacy: {
-        title: "Privacy Policy",
-        description: "Essential privacy information for visitors of the ArtıPLAST website.",
-        paragraphs: [
-          "ArtıPLAST reviews information shared through contact forms and basic site interactions only to support communication and quotation processes.",
-          "Personal data is protected in line with applicable regulations, and update or deletion requests can be initiated when needed.",
-        ],
-      },
-      terms: {
-        title: "Terms of Service",
-        description: "General conditions for using the ArtıPLAST website and its content.",
-        paragraphs: [
-          "Product, visual, and corporate content presented on the site is for information purposes; technical details and custom production terms are confirmed during quotation.",
-          "ArtıPLAST reserves the right to update content without prior notice, and all brand assets remain protected under applicable rights.",
-        ],
-      },
-      delivery: {
-        title: "Delivery & Information",
-        description: "A concise note on ordering, production, and delivery communication.",
-        paragraphs: [
-          "Delivery planning is defined during the quotation stage according to product group, quantity, custom production needs, and shipment region.",
-          "Lead time, packaging, and shipment details are shared in writing by the sales team based on customer requirements.",
-        ],
-      },
-    },
+    pages: buildFallbackPages("English"),
   },
   de: {
     sectionTitle: "Rechtliches",
@@ -85,32 +244,7 @@ const legalDictionary: Record<
       terms: "Nutzungsbedingungen",
       delivery: "Lieferung & Information",
     },
-    pages: {
-      privacy: {
-        title: "Datenschutz",
-        description: "Wesentliche Datenschutzinformationen für Besucher der ArtıPLAST-Website.",
-        paragraphs: [
-          "ArtıPLAST verarbeitet Informationen aus Kontaktformularen und grundlegenden Website-Interaktionen ausschließlich zur Unterstützung von Kommunikation und Angebotsprozessen.",
-          "Personenbezogene Daten werden gemäß den geltenden Vorschriften geschützt; Aktualisierung oder Löschung kann bei Bedarf angefragt werden.",
-        ],
-      },
-      terms: {
-        title: "Nutzungsbedingungen",
-        description: "Allgemeine Bedingungen für die Nutzung der ArtıPLAST-Website und ihrer Inhalte.",
-        paragraphs: [
-          "Produkt-, Bild- und Unternehmensinhalte auf der Website dienen der Information; technische Details und Sonderfertigungen werden im Angebotsprozess bestätigt.",
-          "ArtıPLAST behält sich das Recht vor, Inhalte ohne vorherige Ankündigung zu aktualisieren; alle Markenelemente bleiben rechtlich geschützt.",
-        ],
-      },
-      delivery: {
-        title: "Lieferung & Information",
-        description: "Kurze Informationen zu Bestellung, Produktion und Lieferung.",
-        paragraphs: [
-          "Die Lieferplanung wird im Angebotsprozess nach Produktgruppe, Menge, Sonderfertigung und Versandregion festgelegt.",
-          "Lieferzeit, Verpackung und Versanddetails werden vom Vertrieb schriftlich entsprechend den Kundenanforderungen mitgeteilt.",
-        ],
-      },
-    },
+    pages: buildFallbackPages("German"),
   },
   ar: {
     sectionTitle: "قانوني",
@@ -119,32 +253,7 @@ const legalDictionary: Record<
       terms: "شروط الخدمة",
       delivery: "التسليم والمعلومات",
     },
-    pages: {
-      privacy: {
-        title: "سياسة الخصوصية",
-        description: "معلومات أساسية عن الخصوصية لزوار موقع ArtıPLAST.",
-        paragraphs: [
-          "تقوم ArtıPLAST بمعالجة المعلومات المرسلة عبر نماذج التواصل والتفاعلات الأساسية فقط لدعم التواصل وعمليات تقديم العروض.",
-          "يتم حماية البيانات الشخصية وفقًا للأنظمة المعمول بها ويمكن طلب التحديث أو الحذف عند الحاجة.",
-        ],
-      },
-      terms: {
-        title: "شروط الخدمة",
-        description: "الشروط العامة لاستخدام موقع ArtıPLAST ومحتواه.",
-        paragraphs: [
-          "المحتوى الخاص بالمنتجات والصور والمواد المؤسسية المعروض في الموقع هو لأغراض تعريفية، ويتم تأكيد التفاصيل الفنية وشروط الإنتاج الخاص أثناء مرحلة العرض.",
-          "تحتفظ ArtıPLAST بحق تحديث المحتوى دون إشعار مسبق، كما تبقى جميع عناصر العلامة التجارية محمية وفق الحقوق المعمول بها.",
-        ],
-      },
-      delivery: {
-        title: "التسليم والمعلومات",
-        description: "موجز عن الطلب والإنتاج والتواصل الخاص بالتسليم.",
-        paragraphs: [
-          "يتم تحديد خطة التسليم خلال مرحلة العرض حسب مجموعة المنتج والكمية واحتياجات الإنتاج الخاص ومنطقة الشحن.",
-          "يتم إرسال تفاصيل المدة والتغليف والشحن كتابيًا من قبل فريق المبيعات وفقًا لاحتياجات العميل.",
-        ],
-      },
-    },
+    pages: buildFallbackPages("Arabic"),
   },
   az: {
     sectionTitle: "Hüquqi",
@@ -153,32 +262,7 @@ const legalDictionary: Record<
       terms: "Xidmət Şərtləri",
       delivery: "Çatdırılma və Məlumat",
     },
-    pages: {
-      privacy: {
-        title: "Məxfilik Siyasəti",
-        description: "ArtıPLAST veb-saytı ziyarətçiləri üçün əsas məxfilik məlumatı.",
-        paragraphs: [
-          "ArtıPLAST əlaqə formaları və əsas sayt qarşılıqlı təsirləri vasitəsilə paylaşılan məlumatları yalnız əlaqə və təklif proseslərini dəstəkləmək üçün dəyərləndirir.",
-          "Şəxsi məlumatlar qüvvədə olan qaydalara uyğun qorunur və lazım olduqda yenilənmə və ya silinmə sorğusu başlada bilər.",
-        ],
-      },
-      terms: {
-        title: "Xidmət Şərtləri",
-        description: "ArtıPLAST veb-saytı və məzmununun istifadəsinə dair ümumi şərtlər.",
-        paragraphs: [
-          "Saytda yer alan məhsul, vizual və korporativ məzmun məlumat xarakterlidir; texniki detallar və xüsusi istehsal şərtləri təklif mərhələsində təsdiqlənir.",
-          "ArtıPLAST əvvəlcədən xəbərdarlıq etmədən məzmunu yeniləmək hüququnu saxlayır və bütün brend elementləri müvafiq hüquqlarla qorunur.",
-        ],
-      },
-      delivery: {
-        title: "Çatdırılma və Məlumat",
-        description: "Sifariş, istehsal və çatdırılma barədə qısa məlumat.",
-        paragraphs: [
-          "Çatdırılma planı məhsul qrupu, həcm, xüsusi istehsal ehtiyacı və göndəriş bölgəsinə görə təklif mərhələsində müəyyən edilir.",
-          "Müddət, qablaşdırma və göndəriş detalları satış komandası tərəfindən yazılı şəkildə paylaşılır.",
-        ],
-      },
-    },
+    pages: buildFallbackPages("Azerbaijani"),
   },
   bg: {
     sectionTitle: "Правни",
@@ -187,32 +271,7 @@ const legalDictionary: Record<
       terms: "Условия за ползване",
       delivery: "Доставка и информация",
     },
-    pages: {
-      privacy: {
-        title: "Политика за поверителност",
-        description: "Основна информация за поверителност за посетителите на сайта на ArtıPLAST.",
-        paragraphs: [
-          "ArtıPLAST обработва информацията, споделена чрез формите за контакт и основните взаимодействия със сайта, само за подпомагане на комуникацията и офертните процеси.",
-          "Личните данни се защитават съгласно приложимите разпоредби и при нужда може да бъде заявено актуализиране или изтриване.",
-        ],
-      },
-      terms: {
-        title: "Условия за ползване",
-        description: "Общи условия за използване на сайта на ArtıPLAST и неговото съдържание.",
-        paragraphs: [
-          "Продуктовото, визуалното и корпоративното съдържание на сайта е с информативна цел; техническите детайли и условията за специално производство се уточняват в етапа на офериране.",
-          "ArtıPLAST си запазва правото да актуализира съдържанието без предизвестие и всички елементи на марката остават защитени.",
-        ],
-      },
-      delivery: {
-        title: "Доставка и информация",
-        description: "Кратка информация за поръчка, производство и доставка.",
-        paragraphs: [
-          "Планирането на доставката се определя на етап оферта според продуктовата група, количеството, специалното производство и региона на доставка.",
-          "Срокът, опаковката и детайлите по изпращането се предоставят писмено от търговския екип според нуждите на клиента.",
-        ],
-      },
-    },
+    pages: buildFallbackPages("Bulgarian"),
   },
   fr: {
     sectionTitle: "Mentions légales",
@@ -221,32 +280,7 @@ const legalDictionary: Record<
       terms: "Conditions de service",
       delivery: "Livraison et information",
     },
-    pages: {
-      privacy: {
-        title: "Politique de confidentialité",
-        description: "Informations essentielles sur la confidentialité pour les visiteurs du site ArtıPLAST.",
-        paragraphs: [
-          "ArtıPLAST traite les informations partagées via les formulaires de contact et les interactions de base du site uniquement pour soutenir la communication et les demandes d’offre.",
-          "Les données personnelles sont protégées conformément à la réglementation applicable et une demande de mise à jour ou de suppression peut être initiée si nécessaire.",
-        ],
-      },
-      terms: {
-        title: "Conditions de service",
-        description: "Conditions générales d’utilisation du site ArtıPLAST et de son contenu.",
-        paragraphs: [
-          "Les contenus produits, visuels et institutionnels présentés sur le site sont fournis à titre informatif ; les détails techniques et les conditions de fabrication spéciale sont confirmés lors du devis.",
-          "ArtıPLAST se réserve le droit de mettre à jour le contenu sans préavis et l’ensemble des éléments de marque restent protégés.",
-        ],
-      },
-      delivery: {
-        title: "Livraison et information",
-        description: "Bref aperçu des commandes, de la production et de la communication logistique.",
-        paragraphs: [
-          "La planification de la livraison est définie pendant le devis selon la famille de produits, la quantité, les besoins spécifiques et la région d’expédition.",
-          "Les délais, l’emballage et les détails d’expédition sont communiqués par écrit par l’équipe commerciale selon les besoins du client.",
-        ],
-      },
-    },
+    pages: buildFallbackPages("French"),
   },
 };
 
