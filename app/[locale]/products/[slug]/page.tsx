@@ -77,6 +77,103 @@ export default async function ProductDetailPage({
   const copy = getUiCopy(locale);
   const tavanLambiriVisuals = slug === "tavan-lambiri" ? getTavanLambiriCatalogVisuals(locale) : [];
   const tavanLambiriHeroPreview = slug === "tavan-lambiri" ? getTavanLambiriVisualPreview(locale, 3) : [];
+  const tavanTechnicalContent: Record<
+    Locale,
+    {
+      title: string;
+      description: string;
+      items: Array<{ label: string; value: string }>;
+    }
+  > = {
+    tr: {
+      title: "Tavan Lambirileri Teknik Özellikleri",
+      description: "Tavan Lambirileri ürün grubu için temel ölçü ve üretim esnekliği bilgileri aşağıda sunulmaktadır.",
+      items: [
+        { label: "Kalınlık", value: "8 mm" },
+        { label: "Genişlik", value: "20 mm" },
+        { label: "Standart Uzunluklar", value: "4 metre, 5 metre, 6 metre" },
+        { label: "Üretim Esnekliği", value: "Proje ve talebe göre özelleştirilebilir ölçü seçenekleri sunulabilir." },
+      ],
+    },
+    en: {
+      title: "Ceiling Panel Technical Specifications",
+      description: "Core dimensions and production flexibility details for the ceiling panel product group are listed below.",
+      items: [
+        { label: "Thickness", value: "8 mm" },
+        { label: "Width", value: "20 mm" },
+        { label: "Standard Lengths", value: "4 meters, 5 meters, 6 meters" },
+        { label: "Production Flexibility", value: "Custom size options can be provided according to project scope and demand." },
+      ],
+    },
+    de: {
+      title: "Technische Daten Der Deckenlambris",
+      description: "Die grundlegenden Maße und Hinweise zur Produktionsflexibilität der Deckenlambris finden Sie unten.",
+      items: [
+        { label: "Stärke", value: "8 mm" },
+        { label: "Breite", value: "20 mm" },
+        { label: "Standardlängen", value: "4 Meter, 5 Meter, 6 Meter" },
+        { label: "Produktionsflexibilität", value: "Individuell angepasste Maßoptionen können je nach Projekt und Bedarf angeboten werden." },
+      ],
+    },
+    ar: {
+      title: "المواصفات الفنية لألواح السقف",
+      description: "فيما يلي الأبعاد الأساسية ومعلومات مرونة الإنتاج الخاصة بمجموعة منتجات ألواح السقف.",
+      items: [
+        { label: "السماكة", value: "8 مم" },
+        { label: "العرض", value: "20 مم" },
+        { label: "الأطوال القياسية", value: "4 متر، 5 متر، 6 متر" },
+        { label: "مرونة الإنتاج", value: "يمكن تقديم خيارات مقاسات مخصصة حسب المشروع والطلب." },
+      ],
+    },
+    az: {
+      title: "Tavan Lambiriləri Texniki Xüsusiyyətləri",
+      description: "Tavan lambiriləri məhsul qrupu üçün əsas ölçü və istehsal elastikliyi məlumatları aşağıda təqdim olunur.",
+      items: [
+        { label: "Qalınlıq", value: "8 mm" },
+        { label: "En", value: "20 mm" },
+        { label: "Standart Uzunluqlar", value: "4 metr, 5 metr, 6 metr" },
+        { label: "İstehsal Elastikliyi", value: "Layihə və tələbə uyğun fərdiləşdirilə bilən ölçü seçimləri təqdim oluna bilər." },
+      ],
+    },
+    bg: {
+      title: "Технически Характеристики На Таванните Ламперии",
+      description: "По-долу са представени основните размери и информацията за производствената гъвкавост на таванните ламперии.",
+      items: [
+        { label: "Дебелина", value: "8 mm" },
+        { label: "Ширина", value: "20 mm" },
+        { label: "Стандартни Дължини", value: "4 метра, 5 метра, 6 метра" },
+        { label: "Производствена Гъвкавост", value: "Могат да бъдат предложени персонализирани размери според проекта и търсенето." },
+      ],
+    },
+    fr: {
+      title: "Spécifications Techniques Des Lambris De Plafond",
+      description: "Les dimensions principales et la flexibilité de production pour la gamme de lambris de plafond sont présentées ci-dessous.",
+      items: [
+        { label: "Épaisseur", value: "8 mm" },
+        { label: "Largeur", value: "20 mm" },
+        { label: "Longueurs Standard", value: "4 mètres, 5 mètres, 6 mètres" },
+        { label: "Flexibilité De Production", value: "Des options de dimensions personnalisées peuvent être proposées selon le projet et la demande." },
+      ],
+    },
+    ru: {
+      title: "Технические Характеристики Потолочных Ламбрий",
+      description: "Ниже приведены основные размеры и информация о производственной гибкости для группы потолочных ламбрий.",
+      items: [
+        { label: "Толщина", value: "8 мм" },
+        { label: "Ширина", value: "20 мм" },
+        { label: "Стандартные Длины", value: "4 метра, 5 метров, 6 метров" },
+        { label: "Гибкость Производства", value: "По проекту и запросу могут быть предложены индивидуальные варианты размеров." },
+      ],
+    },
+  };
+  const specificationContent =
+    slug === "tavan-lambiri"
+      ? tavanTechnicalContent[locale]
+      : {
+          title: copy.labels.specifications,
+          description: product.longDescription,
+          items: specPlaceholders,
+        };
   const detailHeading: Record<Locale, string> = {
     tr: "Rafine iç mekanlar ve güven veren üretici sunumu için tasarlandı.",
     en: "Designed for refined interiors and dependable manufacturing presentation.",
@@ -229,11 +326,11 @@ export default async function ProductDetailPage({
           <div className="panel p-8 sm:p-10">
             <SectionHeading
               eyebrow={copy.labels.specifications}
-              title={copy.labels.specifications}
-              description={product.longDescription}
+              title={specificationContent.title}
+              description={specificationContent.description}
             />
             <div className="mt-8 grid gap-3">
-              {specPlaceholders.map((item) => (
+              {specificationContent.items.map((item) => (
                 <div
                   key={item.label}
                   className="flex items-center justify-between rounded-[20px] bg-panel/70 px-5 py-4 text-sm"
