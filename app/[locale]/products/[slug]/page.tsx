@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CatalogVisualGrid } from "@/components/catalog-visual-grid";
 import { CTASection } from "@/components/cta-section";
 import { GalleryGrid } from "@/components/gallery-grid";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { getTavanLambiriCatalogVisuals } from "@/data/catalog-visuals";
 import {
   getProductBySlug,
   getProducts,
@@ -73,6 +75,7 @@ export default async function ProductDetailPage({
   const relatedProducts = getRelatedProducts(locale, slug);
   const specPlaceholders = getSpecPlaceholders(locale);
   const copy = getUiCopy(locale);
+  const tavanLambiriVisuals = slug === "tavan-lambiri" ? getTavanLambiriCatalogVisuals(locale) : [];
   const detailHeading: Record<Locale, string> = {
     tr: "Rafine iç mekanlar ve güven veren üretici sunumu için tasarlandı.",
     en: "Designed for refined interiors and dependable manufacturing presentation.",
@@ -82,6 +85,48 @@ export default async function ProductDetailPage({
     bg: "Създаден за изискани интериори и надеждно представяне на производителя.",
     fr: "Conçu pour des intérieurs raffinés et une présentation fabricant fiable.",
     ru: "Разработано для изысканных интерьеров и надежной презентации производителя.",
+  };
+  const galleryCopy: Record<Locale, { eyebrow: string; title: string; description: string }> = {
+    tr: {
+      eyebrow: "Katalog Görselleri",
+      title: "Tavan Lambirileri desen ve yüzey görselleri",
+      description: "2026 ürün kataloğundaki Tavan Lambirileri bölümünden alınan görseller, ürün grubunun yüzey karakterini net şekilde göstermesi için burada sunuluyor.",
+    },
+    en: {
+      eyebrow: "Catalog Visuals",
+      title: "Ceiling panel pattern and surface visuals",
+      description: "Selected visuals from the 2026 ceiling panel catalog are presented here to show the surface character of the product group with clarity.",
+    },
+    de: {
+      eyebrow: "Katalogbilder",
+      title: "Dekor- und Oberflächenbilder der Deckenlambris",
+      description: "Ausgewählte Bilder aus dem Deckenlambris-Katalog 2026 zeigen hier die Oberflächencharakteristik der Produktgruppe in klarer Form.",
+    },
+    ar: {
+      eyebrow: "صور الكتالوج",
+      title: "صور النقش والسطح لألواح السقف",
+      description: "يتم عرض صور مختارة من كتالوج ألواح السقف لعام 2026 هنا لإبراز طابع السطح الخاص بمجموعة المنتجات بوضوح.",
+    },
+    az: {
+      eyebrow: "Kataloq Vizuaları",
+      title: "Tavan lambirisi naxış və səth vizualları",
+      description: "2026 tavan lambirisi kataloqundan seçilmiş vizuallar məhsul qrupunun səth xarakterini aydın göstərmək üçün burada təqdim olunur.",
+    },
+    bg: {
+      eyebrow: "Каталожни Визии",
+      title: "Десени и повърхности на таванните ламперии",
+      description: "Подбрани визии от каталога за таванни ламперии 2026 показват ясно повърхностния характер на продуктовата група.",
+    },
+    fr: {
+      eyebrow: "Visuels Du Catalogue",
+      title: "Visuels de texture et de surface des lambris de plafond",
+      description: "Des visuels sélectionnés du catalogue 2026 des lambris de plafond sont présentés ici pour montrer clairement le caractère de surface de la gamme.",
+    },
+    ru: {
+      eyebrow: "Каталожные Визуалы",
+      title: "Фактуры и поверхности потолочных ламбрий",
+      description: "Здесь представлены отобранные визуалы из каталога потолочных ламбрий 2026 года, чтобы ясно показать характер поверхности этой группы продукции.",
+    },
   };
 
   return (
@@ -125,6 +170,21 @@ export default async function ProductDetailPage({
           </div>
         </Reveal>
       </section>
+
+      {slug === "tavan-lambiri" ? (
+        <section className="container-shell mt-24">
+          <Reveal>
+            <SectionHeading
+              eyebrow={galleryCopy[locale].eyebrow}
+              title={galleryCopy[locale].title}
+              description={galleryCopy[locale].description}
+            />
+          </Reveal>
+          <div className="mt-8">
+            <CatalogVisualGrid items={tavanLambiriVisuals} />
+          </div>
+        </section>
+      ) : null}
 
       <section className="container-shell mt-24 grid gap-8 lg:grid-cols-2">
         <Reveal>
