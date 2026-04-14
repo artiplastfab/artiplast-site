@@ -452,8 +452,8 @@ const localeCopy: Record<Locale, LocaleCopy> = {
 const productSeeds: ProductSeed[] = [
   {
     slug: "tavan-lambiri",
-    heroImage: "/images/products/tavan-lambiri-hero.svg",
-    cardImage: "/images/products/tavan-lambiri-card.svg",
+    heroImage: "/catalog/tavan-lambirileri/tavan-lambiri-03.jpg",
+    cardImage: "/catalog/tavan-lambirileri/tavan-lambiri-02.jpg",
     translations: {
       tr: { name: "Tavan Lambiri", category: "Tavan Çözümleri", kicker: "Premium tavan kaplama profili", description: "Aydınlık iç mekanlar için temiz çizgili tavan çözümü.", longDescription: "Tavan Lambiri, düzenli ritmi ve sade yüzey diliyle premium projeler için hazırlanmıştır.", features: ["Düzenli tavan ritmi", "Güçlü yüzey görünümü", "Varyasyonlara açık yapı"], applications: ["Konut tavanları", "Mağaza iç mekanları", "Otel projeleri"], confidencePoints: ["İhracat odaklı sunuma uygun", "Profil ve yüzey seçeneklerine açık", "Görsel katalog yapısını destekler", "Teknik föy alanı hazır"], alt: "ArtıPLAST tavan lambiri ürün görseli" },
       en: { name: "Ceiling Cladding", category: "Ceiling Solutions", kicker: "Premium ceiling profile", description: "A clean-lined ceiling solution for bright interiors.", longDescription: "Ceiling Cladding is prepared for premium projects with orderly rhythm and a refined surface language.", features: ["Ordered ceiling rhythm", "Strong surface appearance", "Ready for future variations"], applications: ["Residential ceilings", "Retail interiors", "Hotel projects"], confidencePoints: ["Suitable for export presentation", "Open to finish and profile options", "Supports visual catalog structure", "Ready for technical sheets"], alt: "ArtıPLAST ceiling cladding product visual" },

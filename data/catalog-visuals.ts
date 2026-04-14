@@ -20,3 +20,7 @@ export function getTavanLambiriCatalogVisuals(locale: Locale): CatalogVisual[] {
     };
   });
 }
+
+export function getTavanLambiriVisualPreview(locale: Locale, limit = 4): CatalogVisual[] {
+  return getTavanLambiriCatalogVisuals(locale).slice(0, limit);
+}

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
+import { getTavanLambiriVisualPreview } from "@/data/catalog-visuals";
 import { getUiCopy, type Product } from "@/data/site";
 import { localizedPath, type Locale } from "@/lib/i18n";
 
@@ -12,6 +13,8 @@ export function ProductDetailSection({
   product: Product;
 }) {
   const copy = getUiCopy(locale);
+  const isTavanLambiri = product.slug === "tavan-lambiri";
+  const previewVisuals = isTavanLambiri ? getTavanLambiriVisualPreview(locale) : [];
 
   return (
     <article
@@ -24,7 +27,7 @@ export function ProductDetailSection({
             src={product.heroImage}
             alt={product.alt}
             fill
-            className="object-cover"
+            className={isTavanLambiri ? "object-contain p-8" : "object-cover"}
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
         </div>
@@ -45,6 +48,25 @@ export function ProductDetailSection({
               </div>
             ))}
           </div>
+
+          {isTavanLambiri ? (
+            <div className="mt-8 grid grid-cols-2 gap-3">
+              {previewVisuals.map((item) => (
+                <div
+                  key={item.src}
+                  className="relative aspect-[4/3] overflow-hidden rounded-[20px] border border-border/60 bg-panel"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className="object-contain p-3"
+                    sizes="(max-width: 1024px) 50vw, 20vw"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : null}
 
           <Link
             href={localizedPath(locale, `/products/${product.slug}`)}

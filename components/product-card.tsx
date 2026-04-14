@@ -12,6 +12,7 @@ export function ProductCard({
   product: Product;
 }) {
   const copy = getUiCopy(locale);
+  const isTavanLambiri = product.slug === "tavan-lambiri";
 
   return (
     <article className="group overflow-hidden rounded-[30px] border border-border/60 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift">
@@ -20,7 +21,11 @@ export function ProductCard({
           src={product.cardImage}
           alt={product.alt}
           fill
-          className="object-cover transition duration-700 group-hover:scale-[1.04]"
+          className={
+            isTavanLambiri
+              ? "object-contain p-5 transition duration-700 group-hover:scale-[1.03]"
+              : "object-cover transition duration-700 group-hover:scale-[1.04]"
+          }
           sizes="(max-width: 1024px) 100vw, 33vw"
         />
       </div>

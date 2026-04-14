@@ -6,7 +6,7 @@ import { GalleryGrid } from "@/components/gallery-grid";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { getTavanLambiriCatalogVisuals } from "@/data/catalog-visuals";
+import { getTavanLambiriCatalogVisuals, getTavanLambiriVisualPreview } from "@/data/catalog-visuals";
 import {
   getProductBySlug,
   getProducts,
@@ -76,6 +76,7 @@ export default async function ProductDetailPage({
   const specPlaceholders = getSpecPlaceholders(locale);
   const copy = getUiCopy(locale);
   const tavanLambiriVisuals = slug === "tavan-lambiri" ? getTavanLambiriCatalogVisuals(locale) : [];
+  const tavanLambiriHeroPreview = slug === "tavan-lambiri" ? getTavanLambiriVisualPreview(locale, 3) : [];
   const detailHeading: Record<Locale, string> = {
     tr: "Rafine iç mekanlar ve güven veren üretici sunumu için tasarlandı.",
     en: "Designed for refined interiors and dependable manufacturing presentation.",
@@ -145,7 +146,7 @@ export default async function ProductDetailPage({
                 src={product.heroImage}
                 alt={product.alt}
                 fill
-                className="object-cover"
+                className={slug === "tavan-lambiri" ? "object-contain p-10" : "object-cover"}
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 priority
               />
@@ -167,6 +168,24 @@ export default async function ProductDetailPage({
                 </div>
               ))}
             </div>
+            {slug === "tavan-lambiri" ? (
+              <div className="mt-8 grid grid-cols-3 gap-3">
+                {tavanLambiriHeroPreview.map((item) => (
+                  <div
+                    key={item.src}
+                    className="relative aspect-[4/3] overflow-hidden rounded-[18px] border border-border/60 bg-white"
+                  >
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      className="object-contain p-3"
+                      sizes="(max-width: 1024px) 33vw, 16vw"
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
         </Reveal>
       </section>
